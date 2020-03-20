@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0" xml:id="UUID-fbd8ae29-0a59-f2bb-a1d0-73f5a7f8d6ca" version="5.0" xml:lang="en" xinfo:resource="UUID-fbd8ae29-0a59-f2bb-a1d0-73f5a7f8d6ca" xinfo:resource-id="1357" xinfo:resource-type="component" xinfo:resource-title="Bulk editing" xinfo:resource-titlelabel="" xinfo:version-major="2" xinfo:version-minor="0">
+  <title xinfo:text="1362">Bulk editing</title>
+  <para xinfo:text="1363">With bulk editing, you can modify many items at once, such as adding or removing tags from many articles, adding to or removing names from author lists, and many other time-saving actions.</para>
+  <procedure xml:id="procedure-idm4542979941790431670471589229">
+    <title xinfo:text="1364">To bulk edit multiple items:</title>
+    <step>
+      <para xinfo:text="1365">In the <glossterm baseform="Search Panel">search panel</glossterm>, do one of the following:</para>
+      <stepalternatives>
+        <step>
+          <para xinfo:text="1366">Search for and filter the items you want to edit.</para>
+        </step>
+        <step>
+          <para xinfo:text="1367">Select the collection from which you want to edit items.</para>
+        </step>
+      </stepalternatives>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="UUID-cdf4c3d8-4bf8-af14-97a1-16affda8c24e" width="1085" xinfo:image="UUID-cdf4c3d8-4bf8-af14-97a1-16affda8c24e"/>
+        </imageobject>
+      </mediaobject>
+    </step>
+    <step>
+      <para xinfo:text="1368">Under <emphasis role="bold">Bulk</emphasis>, click <emphasis role="bold">Bulk Edit</emphasis>. The <emphasis role="bold">Bulk Edit</emphasis> widget appears listing all fields you can modify.</para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="UUID-48fbc682-6cb5-41dc-9ef7-a00b5b2755eb" xinfo:image="UUID-48fbc682-6cb5-41dc-9ef7-a00b5b2755eb"/>
+        </imageobject>
+      </mediaobject>
+    </step>
+    <step>
+      <para xinfo:text="1369">For each field, do one of the following:</para>
+      <stepalternatives>
+        <step>
+          <para xinfo:text="1370">Select <emphasis role="bold">Keep</emphasis> to retain the field’s current value.</para>
+        </step>
+        <step>
+          <para xinfo:text="1371">Select <emphasis role="bold">Replace</emphasis> to update the field’s value for all selected items.</para>
+        </step>
+        <step>
+          <para xinfo:text="1372">Other options may be available depending on the field.</para>
+        </step>
+      </stepalternatives>
+    </step>
+    <step>
+      <para xinfo:text="1373">Click <emphasis role="bold">Bulk Save</emphasis>.</para>
+    </step>
+  </procedure>
+  <para><?placeholder Insert text?></para>
+</section>
