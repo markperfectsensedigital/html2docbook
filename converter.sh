@@ -14,5 +14,5 @@
 # Find attributes with tags that have no = and delete them.
 # Remove namespace declaraiton in <html> tag
 
-saxon -s:/Users/mlautman/Documents/paligo/converter/test.html -xsl:/Users/mlautman/Documents/paligo/converter/converter.xsl -o:docbook.xml
+saxon -s:/Users/mlautman/Documents/paligo/converter/test.html -xsl:/Users/mlautman/Documents/paligo/converter/converter.xsl -o:/tmp/docbook.xml
 

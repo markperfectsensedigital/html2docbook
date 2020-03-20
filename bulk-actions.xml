@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<section xmlns="http://docbook.org/ns/docbook" 
+         xmlns:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0" 
+         version="5.0" 
+         xml:lang="en" 
+         xml:id="UUID-739bc269-2ef3-330d-0420-c131e883f836" 
+         xinfo:resource="UUID-739bc269-2ef3-330d-0420-c131e883f836" 
+         xinfo:resource-id="1354" 
+         xinfo:resource-type="component" 
+         xinfo:resource-title="Bulk actions" 
+         xinfo:resource-titlelabel="" 
+         xinfo:version-major="2" 
+         xinfo:version-minor="0">
+  <title xinfo:text="1355">Bulk actions</title>
+  <para xinfo:text="1356">Using bulk actions, you can modify or archive multiple items simultaneously. The following sections describe how to use bulk actions.</para>
+</section>
