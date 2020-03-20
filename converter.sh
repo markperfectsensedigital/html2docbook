@@ -13,6 +13,11 @@
 
 # Find attributes with tags that have no = and delete them.
 # Remove namespace declaraiton in <html> tag
+if [ "$1" == "" ]; then
+    echo "Usage: convertor.sh input_file.html"
+    exit
+fi
 
-saxon -s:/Users/mlautman/Documents/paligo/converter/test.html -xsl:/Users/mlautman/Documents/paligo/converter/converter.xsl -o:/tmp/docbook.xml
-
+./cleanit.py $1
+saxon -s:/Users/mlautman/Documents/paligo/converter/cleanfile.html -xsl:/Users/mlautman/Documents/paligo/converter/converter.xsl -o:/tmp/docbook.xml
+echo "Output in /tmp/docbook.xml"
