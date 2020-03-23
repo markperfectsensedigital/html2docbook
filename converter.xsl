@@ -38,7 +38,7 @@
         </xsl:element>
     </xsl:template>
 
-<!-- Different templates for different <p> contexts.
+    <!-- Different templates for different <p> contexts.
     If the <p> is followed by an <ol>, then we assume that this paragraph starts a procedure. 
     That scenario is processed in a different template.
 -->
@@ -50,7 +50,7 @@
         </para>
     </xsl:template>
 
-<!-- Different templates for different <strong> contexts.
+    <!-- Different templates for different <strong> contexts.
     If the <strong> starts with 'To ' (as in 'To create an article'), then
     we assume that this <strong> starts a procedure. That scenario is processed 
     in a different template.
@@ -78,7 +78,7 @@
         </xsl:choose>
     </xsl:template>
 
-<!-- Assume an <ol> tag always starts a procedure. -->
+    <!-- Assume an <ol> tag always starts a procedure. -->
     <xsl:template match="xhtml:ol">
         <!-- <xsl:message>Entering OL</xsl:message> -->
         <procedure xmlns="http://docbook.org/ns/docbook">
@@ -91,10 +91,10 @@
     </xsl:template>
 
     <xsl:template match="xhtml:ul">
-    <xsl:message>Entering itemized list</xsl:message>
-            <itemizedlist xmlns="http://docbook.org/ns/docbook">
-                <xsl:apply-templates />
-            </itemizedlist>
+        <!-- <xsl:message>Entering itemized list</xsl:message> -->
+        <itemizedlist xmlns="http://docbook.org/ns/docbook">
+            <xsl:apply-templates />
+        </itemizedlist>
     </xsl:template>
 
 
@@ -107,7 +107,7 @@
     </xsl:template>
 
     <xsl:template match="xhtml:li[./parent::xhtml:ul]">
-        <xsl:message>Entering listitem</xsl:message>
+        <!-- <xsl:message>Entering listitem</xsl:message> -->
         <listitem xmlns="http://docbook.org/ns/docbook">
             <xsl:apply-templates />
         </listitem>
@@ -121,6 +121,20 @@
     <xsl:template match="xhtml:a[@class='reference internal']">
         <xsl:apply-templates />
     </xsl:template>
+
+    <xsl:template match="xhtml:ol/xhtml:li/xhtml:img">
+        <mediaobject>
+            <imageobject>
+            <xsl:element name="imagedata">
+            <xsl:attribute name="fileref">UUID-384623b7-d82a-a689-fe28-db43d5b5a0c4</xsl:attribute>
+             <xsl:attribute name="image" namespace="xinfo">UUID-384623b7-d82a-a689-fe28-db43d5b5a0c4</xsl:attribute>
+            </xsl:element>
+            </imageobject>
+        </mediaobject>
+        <xsl:apply-templates />
+    </xsl:template>
+
+
 
     <!--Suppress generic template -->
     <!-- <xsl:template match="text()"/> -->
