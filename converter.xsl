@@ -46,7 +46,6 @@
         </xsl:message>
         <xsl:choose>
             <!-- If a p element has a child strong element, then assume we started a procedure. -->
-
             <xsl:when test="starts-with(./xhtml:strong[1]/text(),'To ')">
                 <procedure xmlns="http://docbook.org/ns/docbook">
                     <title>
@@ -74,18 +73,20 @@
         </emphasis>
     </xsl:template>
 
-    <xsl:template match="xhtml:ol[not(starts-with(preceding-sibling::xhtml:p[1]/xhtml:strong,'To '))]">
-        <xsl:message>Inside OL</xsl:message>
-        <xsl:apply-templates />
+    <xsl:template match="xhtml:ol">
+        <xsl:message>Entering OL</xsl:message>
+        <xsl:apply-templates mode="procedure"/>
+        <xsl:message>Exiting OL</xsl:message>
     </xsl:template>
 
-    <xsl:template match="xhtml:li[not(parent::xhtml:ol[./@class='arabic'])]">
-        <xsl:message>Inside li</xsl:message>
+    <xsl:template match="xhtml:li" mode="procedure">
+        <xsl:message>Entering li</xsl:message>
         <step xmlns="http://docbook.org/ns/docbook">
 
             <xsl:apply-templates />
 
         </step>
+        <xsl:message>Exiting li</xsl:message>
     </xsl:template>
 
 
