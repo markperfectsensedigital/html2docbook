@@ -7,7 +7,7 @@ if (len(sys.argv) < 2):
     sys.exit()
 
 # /&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});/ig
-infile  = open("test.html", "r")
+infile  = open(sys.argv[1], "r")
 outfile = open("cleanfile.html","w")
 suspected_html_entity_pattern = "&&|&\S+?;"
 real_html_entity_pattern = "&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});"
