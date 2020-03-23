@@ -90,13 +90,38 @@
         <!-- <xsl:message>Exiting OL</xsl:message> -->
     </xsl:template>
 
-    <xsl:template match="xhtml:li">
+    <xsl:template match="xhtml:ul">
+    <xsl:message>Entering itemized list</xsl:message>
+            <itemizedlist xmlns="http://docbook.org/ns/docbook">
+                <xsl:apply-templates />
+            </itemizedlist>
+    </xsl:template>
+
+
+    <xsl:template match="xhtml:li[./parent::xhtml:ol]">
         <!-- <xsl:message>Entering li</xsl:message> -->
         <step xmlns="http://docbook.org/ns/docbook">
             <xsl:apply-templates />
         </step>
         <!-- <xsl:message>Exiting li</xsl:message> -->
     </xsl:template>
+
+    <xsl:template match="xhtml:li[./parent::xhtml:ul]">
+        <xsl:message>Entering listitem</xsl:message>
+        <listitem xmlns="http://docbook.org/ns/docbook">
+            <xsl:apply-templates />
+        </listitem>
+        <!-- <xsl:message>Exiting li</xsl:message> -->
+    </xsl:template>
+
+    <xsl:template match="xhtml:span[@class='doc']">
+        <xsl:apply-templates />
+    </xsl:template>
+
+    <xsl:template match="xhtml:a[@class='reference internal']">
+        <xsl:apply-templates />
+    </xsl:template>
+
     <!--Suppress generic template -->
     <!-- <xsl:template match="text()"/> -->
 </xsl:transform>
