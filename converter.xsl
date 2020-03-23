@@ -3,15 +3,26 @@
     xmlns:xhtml="http://www.w3.org/1999/xhtml" version="2.0">
     <xsl:output indent="yes" method="xml"/>
 
-    <xsl:variable name="topic_title" select="//div[@class='Content-document']/div[@class='section']/h1/text()" />
+    <!--xsl:variable name="topic_title" select="//xhtml:div[@class='Content-document']/xhtml:div[@class='section']/xhtml:h1" /-->
+        <xsl:variable name="topic_title" select="substring-before(/xhtml:html/xhtml:head/xhtml:title,' &#8212; Brightspot Docs')" />
     <xsl:template match="/">
-        <section xmlns="http://docbook.org/ns/docbook" 
-            xmlns:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0" version="5.0" xml:lang="en" xinfo:resource-type="component" xinfo:resource-title="Bulk editing" xinfo:resource-titlelabel="" xinfo:version-major="2" xinfo:version-minor="0">
+    <xsl:message><xsl:value-of select="$topic_title"/></xsl:message>
+    <xsl:element name="section" namespace="http://docbook.org/ns/docbook">
+    <!--xsl:attribute name="xmlns">http://docbook.org/ns/docbook</xsl:attribute-->
+    <xsl:attribute name="xinfo" namespace="xmlns">http://ns.expertinfo.se/cms/xmlns/1.0</xsl:attribute>
+    <xsl:attribute name="version">5.0</xsl:attribute>
+    <xsl:attribute name="lang" namespace="xml">en</xsl:attribute>
+    <xsl:attribute name="resource-type" namespace="xinfo">component</xsl:attribute>
+    <xsl:attribute name="resource-title" namespace="xinfo"><xsl:value-of select="$topic_title"/></xsl:attribute>
+    <xsl:attribute name="resource-titlelabel" namespace="xinfo"/>
+    <xsl:attribute name="version-major" namespace="xinfo">2</xsl:attribute>
+    <xsl:attribute name="version-minor" namespace="xinfo">0</xsl:attribute>
+
             <xsl:apply-templates select="//xhtml:div[@class='Content-document']" />
-        </section>
+        </xsl:element>
     </xsl:template>
 
-
+<!-- The content in a topic starts at an element <div class="Content-document">/<div class="section> -->
     <xsl:template match="xhtml:div[@class='Content-document']">
         <xsl:apply-templates select="child::xhtml:div[@class='section']" />
     </xsl:template>
@@ -21,19 +32,24 @@
 
     </xsl:template>
 
+<!-- Set the title from h1 -->
     <xsl:template match="xhtml:h1">
         <title xmlns="http://docbook.org/ns/docbook">
             <xsl:value-of select="./text()" />
         </title>
     </xsl:template>
+
    <xsl:template match="xhtml:p">
+   <xsl:message><xsl:value-of select="."/></xsl:message>
     <xsl:choose>
-        <xsl:when test="./xhtml:strong">
+    <!-- If a p element has a child strong element, then assume we started a procedure. -->
+        
+        <xsl:when test="starts-with(./xhtml:strong[1]/text(),'To ')">
             <procedure xmlns="http://docbook.org/ns/docbook">
                 <title xmlns="http://docbook.org/ns/docbook">
-                    <xsl:value-of select="."/>
+                    <xsl:value-of select="./xhtml:strong"/>
                 </title>
-                <xsl:apply-templates />
+                <xsl:apply-templates select="./following-sibling::xhtml:ol[1]"/>
             </procedure>
         </xsl:when>
         <xsl:otherwise>
@@ -45,28 +61,32 @@
 </xsl:template>
 
 
-    <xsl:template match="xhtml:strong">
+    <xsl:template match="xhtml:strong[not(starts-with(.,'To '))]">
         <xsl:message>
             <xsl:value-of select="."/>
         </xsl:message>
-        <xsl:choose>
-            <xsl:when test="starts-with(.,'To ')">
-                <xsl:message>Found barf </xsl:message>
-
-                <procedure xmlns="http://docbook.org/ns/docbook">
-                    <title xmlns="http://docbook.org/ns/docbook">
-                        <xsl:value-of select="."/>
-                    </title>
-                    <xsl:apply-templates />
-                </procedure>
-            </xsl:when>
-            <xsl:otherwise>
+        <!-- If a strong element starts with "To ", then assume we are starting a procedure. -->
                 <emphasis xmlns="http://docbook.org/ns/docbook" role="bold">
                     <xsl:value-of select="."/>
                 </emphasis>
-            </xsl:otherwise>
-        </xsl:choose>
     </xsl:template>
 
+<xsl:template match="xhtml:ol[not(starts-with(preceding-sibling::xhtml:p[1]/xhtml:strong,'To '))]">
+  <xsl:message>Inside OL</xsl:message>
+<xsl:apply-templates />
+</xsl:template>
+
+    <xsl:template match="xhtml:li[not(parent::xhtml:ol[./@class='arabic'])]">
+    <xsl:message>Inside li</xsl:message>
+    <step xmlns="http://docbook.org/ns/docbook">
+
+    <xsl:apply-templates />
+
+    </step>
+    </xsl:template>
+
+
+
+<!--Suppress generic template -->
     <xsl:template match="text()"/>
 </xsl:transform>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+         xmlns:ns0="xmlns"
+         xmlns:ns0_3="xml"
+         xmlns:ns0_4="xinfo"
+         xmlns:ns0_5="xinfo"
+         xmlns:ns0_6="xinfo"
+         xmlns:ns0_7="xinfo"
+         xmlns:ns0_8="xinfo"
+         ns0:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0"
+         version="5.0"
+         ns0_3:lang="en"
+         ns0_4:resource-type="component"
+         ns0_5:resource-title="Creating a collection from search results"
+         ns0_6:resource-titlelabel=""
+         ns0_7:version-major="2"
+         ns0_8:version-minor="0">
+   <title xmlns:xhtml="http://www.w3.org/1999/xhtml">Creating a collection from search results</title>
+   <procedure xmlns:xhtml="http://www.w3.org/1999/xhtml">
+      <title>To create a collection from search results:</title>
+      <para>In the search panel, search for and filter the items you want to add to a collection.</para>
+      <para>Mark the checkboxes for the items you want to add to the collection.</para>
+      <para>Under Actions, click New Collection.</para>
+      <para>The Save Collection widget appears.</para>
+      <para>In the Save Collection widget type a name for the collection.</para>
+      <para>Click Save.</para>
+   </procedure>
+   <para xmlns:xhtml="http://www.w3.org/1999/xhtml">In the search panel, search for and filter the items you want to add to a collection.</para>
+   <para xmlns:xhtml="http://www.w3.org/1999/xhtml">Mark the checkboxes for the items you want to add to the collection.</para>
+   <para xmlns:xhtml="http://www.w3.org/1999/xhtml">Under Actions, click New Collection.</para>
+   <para xmlns:xhtml="http://www.w3.org/1999/xhtml">The Save Collection widget appears.</para>
+   <para xmlns:xhtml="http://www.w3.org/1999/xhtml">In the Save Collection widget type a name for the collection.</para>
+   <para xmlns:xhtml="http://www.w3.org/1999/xhtml">Click Save.</para>
+   <para xmlns:xhtml="http://www.w3.org/1999/xhtml">See also:</para>
+   <step xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+   <step xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+   <step xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+   <step xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+   <step xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+</section>
