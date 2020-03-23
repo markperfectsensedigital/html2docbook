@@ -40,28 +40,16 @@
         </xsl:element>
     </xsl:template>
 
-    <xsl:template match="xhtml:p">
+    <xsl:template match="xhtml:p[not(./following-sibling::*[1]/name() = 'xhtml:ol')]">
         <xsl:message>
             <xsl:value-of select="."/>
         </xsl:message>
-        <xsl:choose>
-            <!-- If a p element has a child strong element, then assume we started a procedure. -->
-            <xsl:when test="starts-with(./xhtml:strong[1]/text(),'To ')">
-                <procedure xmlns="http://docbook.org/ns/docbook">
-                    <title>
-                        <xsl:value-of select="./xhtml:strong"/>
-                    </title>
-                    <xsl:apply-templates select="./following-sibling::xhtml:ol[1]"/>
-                </procedure>
-            </xsl:when>
-            <xsl:otherwise>
-                <para xmlns="http://docbook.org/ns/docbook">
+          <para xmlns="http://docbook.org/ns/docbook">
                     <xsl:value-of select="." />
                 </para>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
-
+                </xsl:template>
+      
+    
 
     <xsl:template match="xhtml:strong[not(starts-with(.,'To '))]">
         <xsl:message>
@@ -75,11 +63,16 @@
 
     <xsl:template match="xhtml:ol">
         <xsl:message>Entering OL</xsl:message>
-        <xsl:apply-templates mode="procedure"/>
+                  <procedure xmlns="http://docbook.org/ns/docbook">
+                    <title>
+                        <xsl:value-of select="./preceding-sibling::xhtml:p[1]/xhtml:strong"/>
+                    </title>
+                    <xsl:apply-templates />
+                </procedure>
         <xsl:message>Exiting OL</xsl:message>
     </xsl:template>
 
-    <xsl:template match="xhtml:li" mode="procedure">
+    <xsl:template match="xhtml:li">
         <xsl:message>Entering li</xsl:message>
         <step xmlns="http://docbook.org/ns/docbook">
 
