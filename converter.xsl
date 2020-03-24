@@ -38,15 +38,12 @@
         </xsl:element>
     </xsl:template>
 
-    <!-- Different templates for different <p> contexts.
-    If the <p> is followed by an <ol>, then we assume that this paragraph starts a procedure. 
+    <!-- If the <p> is followed by an <ol>, then we assume that this paragraph starts a procedure. 
     That scenario is processed in a different template.
 -->
     <xsl:template match="xhtml:p[not(./following-sibling::*[1]/name() = 'ol')]">
         <para xmlns="http://docbook.org/ns/docbook">
-            <!-- <xsl:value-of select="." /> -->
             <xsl:apply-templates />
-            <!--xsl:apply-templates select="node()"/-->
         </para>
     </xsl:template>
 
@@ -97,20 +94,31 @@
         </itemizedlist>
     </xsl:template>
 
+    <xsl:template match="xhtml:ol/xhtml:li/xhtml:ul">
+        <xsl:message>Entering itemized list</xsl:message>
+        <stepalternatives xmlns="http://docbook.org/ns/docbook">
+            <xsl:apply-templates />
+        </stepalternatives>
+    </xsl:template>
 
-    <xsl:template match="xhtml:li[./parent::xhtml:ol]">
+    <xsl:template match="xhtml:ol/xhtml:li">
+        <!-- <xsl:message>Entering li</xsl:message> -->
+        <step xmlns="http://docbook.org/ns/docbook">
+            <xsl:apply-templates/>
+        </step>
+    </xsl:template>
+
+    <xsl:template match="xhtml:ul/xhtml:li">
+        <listitem xmlns="http://docbook.org/ns/docbook">
+            <xsl:apply-templates />
+        </listitem>
+    </xsl:template>
+
+    <xsl:template match="xhtml:li" mode="stepalternatives">
         <!-- <xsl:message>Entering li</xsl:message> -->
         <step xmlns="http://docbook.org/ns/docbook">
             <xsl:apply-templates />
         </step>
-        <!-- <xsl:message>Exiting li</xsl:message> -->
-    </xsl:template>
-
-    <xsl:template match="xhtml:li[./parent::xhtml:ul]">
-        <!-- <xsl:message>Entering listitem</xsl:message> -->
-        <listitem xmlns="http://docbook.org/ns/docbook">
-            <xsl:apply-templates />
-        </listitem>
         <!-- <xsl:message>Exiting li</xsl:message> -->
     </xsl:template>
 
@@ -123,7 +131,7 @@
     </xsl:template>
 
     <xsl:template match="xhtml:ol/xhtml:li/xhtml:img">
-        <mediaobject>
+        <mediaobject xmlns="http://docbook.org/ns/docbook">
             <imageobject>
             <xsl:element name="imagedata">
             <xsl:attribute name="fileref">UUID-384623b7-d82a-a689-fe28-db43d5b5a0c4</xsl:attribute>
