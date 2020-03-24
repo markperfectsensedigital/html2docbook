@@ -15,6 +15,9 @@ for line in infile:
     newline = line
     newline = re.sub("&&","",newline)
     newline = re.sub("&l=","",newline)
+    newline = re.sub("’","'",newline)
+    newline = re.sub("“","\"",newline)
+    newline = re.sub("”","\"",newline)
     res = re.findall(suspected_html_entity_pattern,line)
     if res is not None:
         for item in res:
