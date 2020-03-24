@@ -41,7 +41,7 @@
     <!-- If the <p> is followed by an <ol>, then we assume that this paragraph starts a procedure. 
     That scenario is processed in a different template.
 -->
-    <xsl:template match="xhtml:p[not(./following-sibling::*[1]/name() = 'ol')]">
+    <xsl:template match="xhtml:p[not(starts-with(./child::xhtml:strong[1],'To '))]">
         <para xmlns="http://docbook.org/ns/docbook">
             <xsl:apply-templates />
         </para>
@@ -87,6 +87,16 @@
         <!-- <xsl:message>Exiting OL</xsl:message> -->
     </xsl:template>
 
+    <xsl:template match="xhtml:ul[preceding-sibling::xhtml:p[1]/xhtml:strong]">
+
+ 
+        <itemizedlist xmlns="http://docbook.org/ns/docbook">
+            <title>
+                <xsl:value-of select="./preceding-sibling::xhtml:p[1]/xhtml:strong"/>
+            </title>
+            <xsl:apply-templates />
+        </itemizedlist>
+           </xsl:template>
     <xsl:template match="xhtml:ul">
         <!-- <xsl:message>Entering itemized list</xsl:message> -->
         <itemizedlist xmlns="http://docbook.org/ns/docbook">
