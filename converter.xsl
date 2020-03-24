@@ -2,6 +2,7 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:xhtml="http://www.w3.org/1999/xhtml" 
     xmlns:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0" version="2.0" exclude-result-prefixes="xhtml xinfo">
+    <xsl:include href="tables.xsl"/>
     <xsl:output indent="yes" method="xml"/>
 
     <xsl:variable name="topic_title" select="substring-before(/xhtml:html/xhtml:head/xhtml:title,' &#8212; Brightspot Docs')" />
@@ -59,7 +60,6 @@
     Otherwise, output the node in an <emphasis> tag.
 -->
     <xsl:template match="xhtml:strong[not(starts-with(.,'To '))]">
-
         <xsl:choose>
             <xsl:when test="./text() = 'See also:'">
                 <xsl:element name="phrase">
@@ -75,8 +75,10 @@
         </xsl:choose>
     </xsl:template>
 
-    <!-- Assume an <ol> tag always starts a procedure. -->
-    <xsl:template match="xhtml:ol">
+<!-- Lists -->
+
+    <!-- Assume an <ol> that is a sibling a <p><strong> starts a procedure. -->
+    <xsl:template match="xhtml:ol[./preceding-sibling::xhtml:p[1]/xhtml:strong]">
         <!-- <xsl:message>Entering OL</xsl:message> -->
         <procedure xmlns="http://docbook.org/ns/docbook">
             <title>
@@ -87,9 +89,17 @@
         <!-- <xsl:message>Exiting OL</xsl:message> -->
     </xsl:template>
 
-    <xsl:template match="xhtml:ul[preceding-sibling::xhtml:p[1]/xhtml:strong]">
+    <!-- Assume an <ol> that is a child of <ol><li> is a list of substeps -->
+    <xsl:template match="xhtml:ol/xhtml:li/xhtml:ol">
+        <!-- <xsl:message>Entering OL</xsl:message> -->
+        <substeps xmlns="http://docbook.org/ns/docbook">
+            <xsl:apply-templates />
+        </substeps>
+        <!-- <xsl:message>Exiting OL</xsl:message> -->
+    </xsl:template>
 
- 
+
+    <xsl:template match="xhtml:ul[preceding-sibling::xhtml:p[1]/xhtml:strong]">
         <itemizedlist xmlns="http://docbook.org/ns/docbook">
             <title>
                 <xsl:value-of select="./preceding-sibling::xhtml:p[1]/xhtml:strong"/>
