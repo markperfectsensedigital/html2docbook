@@ -13,10 +13,17 @@
 
 # Find attributes with tags that have no = and delete them.
 # Remove namespace declaraiton in <html> tag
-if [ $1 == "" ]; then
+
+if [[ $# -ne 1 ]]; then
     echo "Usage: convertor.sh input_file.html"
     exit
 fi
+
+if [[ ! -f $1 ]]; then
+    echo "$1 does not exist. Try again."
+    exit
+fi
+
 
 ./cleanit.py $1
 if [ $? -ne 0 ]; then
