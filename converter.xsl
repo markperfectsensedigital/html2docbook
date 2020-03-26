@@ -4,6 +4,8 @@
     xmlns:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0" version="2.0" exclude-result-prefixes="xhtml xinfo">
     <xsl:include href="tables.xsl"/>
     <xsl:include href="images.xsl"/>
+    <xsl:include href="inline_elements.xsl"/>
+    <xsl:include href="code_samples.xsl"/>
     <xsl:output indent="yes" method="xml"/>
 
     <xsl:variable name="topic_title" select="substring-before(/xhtml:html/xhtml:head/xhtml:title,' &#8212; Brightspot Docs')" />
@@ -36,7 +38,7 @@
     <!-- Set the title from h1 -->
     <xsl:template match="xhtml:h1">
         <xsl:element name="title" namespace="http://docbook.org/ns/docbook">
-            <xsl:value-of select="./text()" />
+            <xsl:apply-templates />
         </xsl:element>
     </xsl:template>
 
@@ -163,7 +165,8 @@
         <xsl:apply-templates />
     </xsl:template>
 
-
+<!-- Toss the internal header links -->
+<xsl:template match="xhtml:a[@class='headerlink']"/> 
 
     <!--Suppress generic template -->
     <!-- <xsl:template match="text()"/> -->
