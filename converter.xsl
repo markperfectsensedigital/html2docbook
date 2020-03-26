@@ -48,12 +48,20 @@
     That scenario is processed in a different template.
 -->
     <!-- <xsl:template match="xhtml:p[not(starts-with(./child::xhtml:strong[1],'To '))]"> -->
-     <xsl:template match="xhtml:p[not(@class = 'first admonition-title')] | 
-     xhtml:p[not(starts-with(./child::xhtml:strong[1],'To '))]">
-     <!-- <xsl:template match="xhtml:p[not(@class = 'first admonition-title')]"> -->
-        <para xmlns="http://docbook.org/ns/docbook">
-            <xsl:apply-templates />
-        </para>
+    <xsl:template match="xhtml:p">
+
+        <xsl:choose>
+            <xsl:when test="(starts-with(./child::xhtml:strong[1],'To ')) or 
+            (@class = 'first admonition-title')">
+            </xsl:when>
+            <xsl:otherwise>
+                <para xmlns="http://docbook.org/ns/docbook">
+                    <xsl:apply-templates />
+                </para>
+            </xsl:otherwise>
+        </xsl:choose>
+
+
     </xsl:template>
 
     <!-- Different templates for different <strong> contexts.
@@ -93,12 +101,10 @@
         <xsl:apply-templates />
     </xsl:template>
 
-    
 
-<!-- Toss the internal header links -->
-<xsl:template match="xhtml:p[@class='first admonition-title']"/> 
-<xsl:template match="xhtml:p[starts-with(./child::xhtml:strong[1],'To ')]"/> 
-<xsl:template match="xhtml:a[@class='headerlink']"/> 
+
+    <!-- Toss the internal header links -->
+    <xsl:template match="xhtml:a[@class='headerlink']"/>
 
     <!--Suppress generic template -->
     <!-- <xsl:template match="text()"/> -->
