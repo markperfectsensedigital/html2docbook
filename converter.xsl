@@ -3,6 +3,7 @@
     xmlns:xhtml="http://www.w3.org/1999/xhtml" 
     xmlns:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0" version="2.0" exclude-result-prefixes="xhtml xinfo">
     <xsl:include href="tables.xsl"/>
+    <xsl:include href="images.xsl"/>
     <xsl:output indent="yes" method="xml"/>
 
     <xsl:variable name="topic_title" select="substring-before(/xhtml:html/xhtml:head/xhtml:title,' &#8212; Brightspot Docs')" />
