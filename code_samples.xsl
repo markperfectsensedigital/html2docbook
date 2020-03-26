@@ -22,7 +22,7 @@
 
 
     <!-- Code sample, no highlighting or heading or numbers -->
-    <xsl:template match="xhtml:div[@class='highlight-xml notranslate']/xhtml:div[@class='highlight']/xhtml:pre">
+    <xsl:template match="xhtml:div[matches(@class,'highlight-\S+ notranslate')]/xhtml:div[@class='highlight']/xhtml:pre">
         <programlisting xmlns="http://docbook.org/ns/docbook">
             <xsl:apply-templates />
         </programlisting>

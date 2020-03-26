@@ -6,6 +6,8 @@
     <xsl:include href="images.xsl"/>
     <xsl:include href="inline_elements.xsl"/>
     <xsl:include href="code_samples.xsl"/>
+    <xsl:include href="lists.xsl"/>
+    <xsl:include href="admonitions.xsl"/>
     <xsl:output indent="yes" method="xml"/>
 
     <xsl:variable name="topic_title" select="substring-before(/xhtml:html/xhtml:head/xhtml:title,' &#8212; Brightspot Docs')" />
@@ -28,7 +30,7 @@
 
     <!-- The content in a topic starts at an element <div class="Content-document">/<div class="section> -->
     <xsl:template match="xhtml:div[@class='Content-document']">
-        <xsl:apply-templates select="child::xhtml:div[@class='section']" />
+        <xsl:apply-templates />
     </xsl:template>
 
     <xsl:template match="xhtml:div[@class='section']">
@@ -45,7 +47,10 @@
     <!-- If the <p> is followed by an <ol>, then we assume that this paragraph starts a procedure. 
     That scenario is processed in a different template.
 -->
-    <xsl:template match="xhtml:p[not(starts-with(./child::xhtml:strong[1],'To '))]">
+    <!-- <xsl:template match="xhtml:p[not(starts-with(./child::xhtml:strong[1],'To '))]"> -->
+     <xsl:template match="xhtml:p[not(@class = 'first admonition-title')] | 
+     xhtml:p[not(starts-with(./child::xhtml:strong[1],'To '))]">
+     <!-- <xsl:template match="xhtml:p[not(@class = 'first admonition-title')]"> -->
         <para xmlns="http://docbook.org/ns/docbook">
             <xsl:apply-templates />
         </para>
@@ -78,72 +83,7 @@
         </xsl:choose>
     </xsl:template>
 
-<!-- Lists -->
 
-    <!-- Assume an <ol> that is a sibling a <p><strong> starts a procedure. -->
-    <xsl:template match="xhtml:ol[./preceding-sibling::xhtml:p[1]/xhtml:strong]">
-        <!-- <xsl:message>Entering OL</xsl:message> -->
-        <procedure xmlns="http://docbook.org/ns/docbook">
-            <title>
-                <xsl:value-of select="./preceding-sibling::xhtml:p[1]/xhtml:strong"/>
-            </title>
-            <xsl:apply-templates />
-        </procedure>
-        <!-- <xsl:message>Exiting OL</xsl:message> -->
-    </xsl:template>
-
-    <!-- Assume an <ol> that is a child of <ol><li> is a list of substeps -->
-    <xsl:template match="xhtml:ol/xhtml:li/xhtml:ol">
-        <!-- <xsl:message>Entering OL</xsl:message> -->
-        <substeps xmlns="http://docbook.org/ns/docbook">
-            <xsl:apply-templates />
-        </substeps>
-        <!-- <xsl:message>Exiting OL</xsl:message> -->
-    </xsl:template>
-
-
-    <xsl:template match="xhtml:ul[preceding-sibling::xhtml:p[1]/xhtml:strong]">
-        <itemizedlist xmlns="http://docbook.org/ns/docbook">
-            <title>
-                <xsl:value-of select="./preceding-sibling::xhtml:p[1]/xhtml:strong"/>
-            </title>
-            <xsl:apply-templates />
-        </itemizedlist>
-           </xsl:template>
-    <xsl:template match="xhtml:ul">
-        <!-- <xsl:message>Entering itemized list</xsl:message> -->
-        <itemizedlist xmlns="http://docbook.org/ns/docbook">
-            <xsl:apply-templates />
-        </itemizedlist>
-    </xsl:template>
-
-    <xsl:template match="xhtml:ol/xhtml:li/xhtml:ul">
-        <xsl:message>Entering itemized list</xsl:message>
-        <stepalternatives xmlns="http://docbook.org/ns/docbook">
-            <xsl:apply-templates />
-        </stepalternatives>
-    </xsl:template>
-
-    <xsl:template match="xhtml:ol/xhtml:li">
-        <!-- <xsl:message>Entering li</xsl:message> -->
-        <step xmlns="http://docbook.org/ns/docbook">
-            <xsl:apply-templates/>
-        </step>
-    </xsl:template>
-
-    <xsl:template match="xhtml:ul/xhtml:li">
-        <listitem xmlns="http://docbook.org/ns/docbook">
-            <xsl:apply-templates />
-        </listitem>
-    </xsl:template>
-
-    <xsl:template match="xhtml:li" mode="stepalternatives">
-        <!-- <xsl:message>Entering li</xsl:message> -->
-        <step xmlns="http://docbook.org/ns/docbook">
-            <xsl:apply-templates />
-        </step>
-        <!-- <xsl:message>Exiting li</xsl:message> -->
-    </xsl:template>
 
     <xsl:template match="xhtml:span[@class='doc']">
         <xsl:apply-templates />
@@ -153,19 +93,11 @@
         <xsl:apply-templates />
     </xsl:template>
 
-    <xsl:template match="xhtml:ol/xhtml:li/xhtml:img">
-        <mediaobject xmlns="http://docbook.org/ns/docbook">
-            <imageobject>
-            <xsl:element name="imagedata">
-            <xsl:attribute name="fileref">UUID-384623b7-d82a-a689-fe28-db43d5b5a0c4</xsl:attribute>
-             <xsl:attribute name="image" namespace="xinfo">UUID-384623b7-d82a-a689-fe28-db43d5b5a0c4</xsl:attribute>
-            </xsl:element>
-            </imageobject>
-        </mediaobject>
-        <xsl:apply-templates />
-    </xsl:template>
+    
 
 <!-- Toss the internal header links -->
+<xsl:template match="xhtml:p[@class='first admonition-title']"/> 
+<xsl:template match="xhtml:p[starts-with(./child::xhtml:strong[1],'To ')]"/> 
 <xsl:template match="xhtml:a[@class='headerlink']"/> 
 
     <!--Suppress generic template -->
