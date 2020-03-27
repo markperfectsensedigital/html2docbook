@@ -40,7 +40,7 @@
     <!-- Set the title from h1 -->
     <xsl:template match="xhtml:h1">
         <xsl:element name="title" namespace="http://docbook.org/ns/docbook">
-            <xsl:apply-templates />
+            <xsl:value-of select="text()" />
         </xsl:element>
     </xsl:template>
 
@@ -49,7 +49,6 @@
 -->
     <!-- <xsl:template match="xhtml:p[not(starts-with(./child::xhtml:strong[1],'To '))]"> -->
     <xsl:template match="xhtml:p">
-
         <xsl:choose>
             <xsl:when test="(starts-with(./child::xhtml:strong[1],'To ')) or 
             (@class = 'first admonition-title')">
@@ -90,21 +89,6 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
-
-
-    <xsl:template match="xhtml:span[@class='doc']">
-        <xsl:apply-templates />
-    </xsl:template>
-
-    <xsl:template match="xhtml:a[@class='reference internal']">
-        <xsl:apply-templates />
-    </xsl:template>
-
-
-
-    <!-- Toss the internal header links -->
-    <xsl:template match="xhtml:a[@class='headerlink']"/>
 
     <!--Suppress generic template -->
     <!-- <xsl:template match="text()"/> -->

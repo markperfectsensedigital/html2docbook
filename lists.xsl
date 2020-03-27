@@ -43,7 +43,7 @@
             <xsl:apply-templates />
         </itemizedlist>
     </xsl:template>
-    <xsl:template match="xhtml:ul">
+    <xsl:template match="xhtml:ul | xhtml:div[@class='line-block']">
         <!-- <xsl:message>Entering itemized list</xsl:message> -->
         <itemizedlist xmlns="http://docbook.org/ns/docbook">
             <xsl:apply-templates />
@@ -57,7 +57,7 @@
         </stepalternatives>
     </xsl:template>
 
-    <xsl:template match="xhtml:ol/xhtml:li">
+    <xsl:template match="xhtml:ol/xhtml:li | xhtml:div[@class='line-block']/xhtml:div[@class='line']">
         <!-- If an <li> is the child of an <ol> whose previous sibling <p>
     starts with 'To ', then assume this <li> is a <step> in a <procedure>. -->
         <xsl:choose>
