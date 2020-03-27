@@ -14,7 +14,7 @@
     <xsl:variable name="topic_title">
         <xsl:choose>
             <xsl:when test="string-length($startingheading) > 0">
-                    <xsl:value-of select="$startingheading"/>
+                <xsl:value-of select="$startingheading"/>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:value-of select="substring-before(/xhtml:html/xhtml:head/xhtml:title,' &#8212; Brightspot Docs')"/>
@@ -24,61 +24,76 @@
 
 
     <xsl:template match="/">
-            <xsl:message>
+
+        <xsl:element name="section" namespace="http://docbook.org/ns/docbook">
+            <xsl:attribute name="xinfo" namespace="xmlns">http://ns.expertinfo.se/cms/xmlns/1.0</xsl:attribute>
+            <xsl:attribute name="version">5.0</xsl:attribute>
+            <xsl:attribute name="lang" namespace="xml">en</xsl:attribute>
+            <xsl:attribute name="resource-type" namespace="xinfo">component</xsl:attribute>
+            <xsl:attribute name="resource-title" namespace="xinfo">
                 <xsl:value-of select="$topic_title"/>
+            </xsl:attribute>
+            <xsl:attribute name="resource-titlelabel" namespace="xinfo"/>
+            <xsl:attribute name="version-major" namespace="xinfo">2</xsl:attribute>
+            <xsl:attribute name="version-minor" namespace="xinfo">0</xsl:attribute>
+            <xsl:apply-templates select="//xhtml:div[@class='Content-document']" />
+        </xsl:element>
+    </xsl:template>
+
+    <!-- The content in a topic starts at an element <div class="Content-document">/<div class="section> -->
+    <xsl:template match="xhtml:div[@class='Content-document']">
+        <xsl:for-each select="descendant::xhtml:div">
+            <xsl:message>
+                <xsl:value-of select="generate-id(.)"/>
             </xsl:message>
-            <xsl:element name="section" namespace="http://docbook.org/ns/docbook">
-                <xsl:attribute name="xinfo" namespace="xmlns">http://ns.expertinfo.se/cms/xmlns/1.0</xsl:attribute>
-                <xsl:attribute name="version">5.0</xsl:attribute>
-                <xsl:attribute name="lang" namespace="xml">en</xsl:attribute>
-                <xsl:attribute name="resource-type" namespace="xinfo">component</xsl:attribute>
-                <xsl:attribute name="resource-title" namespace="xinfo">
-                    <xsl:value-of select="$topic_title"/>
-                </xsl:attribute>
-                <xsl:attribute name="resource-titlelabel" namespace="xinfo"/>
-                <xsl:attribute name="version-major" namespace="xinfo">2</xsl:attribute>
-                <xsl:attribute name="version-minor" namespace="xinfo">0</xsl:attribute>
+        </xsl:for-each>
+        <xsl:choose>
+            <xsl:when test="string-length($startingheading) = 0">
+                <xsl:apply-templates select="child::xhtml:div[@class='section'][1]" />
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:message>Matching nodes: <xsl:value-of select="generate-id(descendant::*[text()=$topic_title][1]/..)" />
+                </xsl:message>
+                <xsl:apply-templates select="descendant::*[text()=$topic_title][1]/.."/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
 
-                <xsl:apply-templates select="//xhtml:div[@class='Content-document']" />
-            </xsl:element>
-        </xsl:template>
+    <xsl:template match="xhtml:div[@class='section']">
+        <xsl:message>In section <xsl:value-of select="generate-id(.)"/></xsl:message>
+        <xsl:apply-templates />
+    </xsl:template>
 
-        <!-- The content in a topic starts at an element <div class="Content-document">/<div class="section> -->
-        <xsl:template match="xhtml:div[@class='Content-document']">
-            <xsl:apply-templates />
-        </xsl:template>
 
-        <xsl:template match="xhtml:div[@class='section']">
-            <xsl:apply-templates />
-        </xsl:template>
+    <!-- Set the title from h1 -->
+    <xsl:template match="xhtml:h1|xhtml:h2|xhtml:h3|xhtml:h4">
+        <xsl:element name="title" namespace="http://docbook.org/ns/docbook">
+            <xsl:value-of select="text()" />
+        </xsl:element>
 
-        <!-- Set the title from h1 -->
-        <xsl:template match="xhtml:h1">
-            <xsl:element name="title" namespace="http://docbook.org/ns/docbook">
-                <xsl:value-of select="text()" />
-            </xsl:element>
-        </xsl:template>
+    </xsl:template>
 
-        <!-- If the <p> is followed by an <ol>, then we assume that this paragraph starts a procedure. 
+    <!-- If the <p> is followed by an <ol>, then we assume that this paragraph starts a procedure. 
     That scenario is processed in a different template.
 -->
-        <!-- <xsl:template match="xhtml:p[not(starts-with(./child::xhtml:strong[1],'To '))]"> -->
-        <xsl:template match="xhtml:p">
-            <xsl:choose>
-                <xsl:when test="(starts-with(./child::xhtml:strong[1],'To ')) or 
+    <!-- <xsl:template match="xhtml:p[not(starts-with(./child::xhtml:strong[1],'To '))]"> -->
+    <xsl:template match="xhtml:p">
+        <xsl:choose>
+            <xsl:when test="(starts-with(./child::xhtml:strong[1],'To ')) or 
             (@class = 'first admonition-title')">
-                </xsl:when>
-                <xsl:otherwise>
-                    <para xmlns="http://docbook.org/ns/docbook">
-                        <xsl:apply-templates />
-                    </para>
-                </xsl:otherwise>
-            </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:message>OTHERWISE</xsl:message>
+                <para xmlns="http://docbook.org/ns/docbook">
+                    <xsl:apply-templates />
+                </para>
+            </xsl:otherwise>
+        </xsl:choose>
 
 
-        </xsl:template>
+    </xsl:template>
 
-        <!-- Different templates for different <strong> contexts.
+    <!-- Different templates for different <strong> contexts.
     If the <strong> starts with 'To ' (as in 'To create an article'), then
     we assume that this <strong> starts a procedure. That scenario is processed 
     in a different template.
@@ -89,22 +104,22 @@
 
     Otherwise, output the node in an <emphasis> tag.
 -->
-        <xsl:template match="xhtml:strong[not(starts-with(.,'To '))]">
-            <xsl:choose>
-                <xsl:when test="./text() = 'See also:'">
-                    <xsl:element name="phrase">
-                        <xsl:attribute name="varset" namespace="xinfo">446</xsl:attribute>
-                        <xsl:attribute name="variable" namespace="xinfo">6</xsl:attribute>
-                    </xsl:element>
-                </xsl:when>
-                <xsl:otherwise>
-                    <emphasis xmlns="http://docbook.org/ns/docbook" role="bold">
-                        <xsl:apply-templates />
-                    </emphasis>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:template>
+    <xsl:template match="xhtml:strong[not(starts-with(.,'To '))]">
+        <xsl:choose>
+            <xsl:when test="./text() = 'See also:'">
+                <xsl:element name="phrase">
+                    <xsl:attribute name="varset" namespace="xinfo">446</xsl:attribute>
+                    <xsl:attribute name="variable" namespace="xinfo">6</xsl:attribute>
+                </xsl:element>
+            </xsl:when>
+            <xsl:otherwise>
+                <emphasis xmlns="http://docbook.org/ns/docbook" role="bold">
+                    <xsl:apply-templates />
+                </emphasis>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
 
-        <!--Suppress generic template -->
-        <!-- <xsl:template match="text()"/> -->
-    </xsl:transform>
+    <!--Suppress generic template -->
+    <!-- <xsl:template match="text()"/> -->
+</xsl:transform>
