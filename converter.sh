@@ -14,8 +14,8 @@
 # Find attributes with tags that have no = and delete them.
 # Remove namespace declaraiton in <html> tag
 
-if [[ $# -ne 1 ]]; then
-    echo "Usage: convertor.sh input_file.html"
+if [[ $# -lt 1 ]]; then
+    echo "Usage: convertor.sh input_file.html [quoted heading text]"
     exit
 fi
 
@@ -31,5 +31,5 @@ if [ $? -ne 0 ]; then
     exit
 fi
 OUTPUTFILE='docbook.xml'
-saxon -s:/Users/mlautman/Documents/paligo/converter/cleanfile.html -xsl:/Users/mlautman/Documents/paligo/converter/converter.xsl -o:$OUTPUTFILE
+saxon -s:/Users/mlautman/Documents/paligo/converter/cleanfile.html -xsl:/Users/mlautman/Documents/paligo/converter/converter.xsl -o:$OUTPUTFILE startingheading="$2"
 echo "Output in $OUTPUTFILE"
