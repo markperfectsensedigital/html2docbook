@@ -21,7 +21,7 @@
     <xsl:template match="xhtml:a">
         <xsl:choose>
         <!-- Process a link to an internal target -->
-            <xsl:when test="@class='reference internal'">
+            <xsl:when test="contains(@class,'reference internal')">
                 <xsl:apply-templates />
             </xsl:when>
             <!-- Toss shareable links to interhal headers (the ones with the paragraph symbol) -->
