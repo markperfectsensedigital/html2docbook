@@ -83,7 +83,6 @@
             (@class = 'first admonition-title')">
             </xsl:when>
             <xsl:otherwise>
-                <xsl:message>OTHERWISE</xsl:message>
                 <para xmlns="http://docbook.org/ns/docbook">
                     <xsl:apply-templates />
                 </para>

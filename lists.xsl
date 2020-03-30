@@ -80,7 +80,9 @@
 
     <xsl:template match="xhtml:ul/xhtml:li">
         <listitem xmlns="http://docbook.org/ns/docbook">
-            <xsl:apply-templates />
+            <para>
+                <xsl:apply-templates />
+            </para>
         </listitem>
     </xsl:template>
 
