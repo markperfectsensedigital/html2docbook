@@ -40,13 +40,21 @@ for line in infile:
             #print(res.group(1))
             newline = re.sub(">$","/>",newline)
 
+    res = re.search("<input(.*?)>",newline)
+    if res is not None:
+        if res.group(1)[-1:] != "/":
+            #print(res.group(1))
+            newline = re.sub(">$","/>",newline)
 
     newline = re.sub("data-docsearch-input","",newline)
     newline = re.sub("hidden","",newline)
     newline = re.sub("<option selected>","<option selected=\"selected\">",newline)
 
 
+ #   if newline.startswith("<html xmlns="):
+ #       outfile.write('[<!ENTITY nbsp "&#160;">]>')
     outfile.write(newline)
+
 infile.close()
 outfile.close()
 print("Output in cleanfile.html")

@@ -8,6 +8,7 @@
     <xsl:include href="code_samples.xsl"/>
     <xsl:include href="lists.xsl"/>
     <xsl:include href="admonitions.xsl"/>
+    <xsl:include href="image_variables.xsl"/>
     <xsl:output indent="yes" method="xml"/>
 
     <xsl:param name="startingheading"/>

@@ -94,17 +94,7 @@
         <!-- <xsl:message>Exiting li</xsl:message> -->
     </xsl:template>
 
-    <xsl:template match="xhtml:ol/xhtml:li/xhtml:img">
-        <mediaobject xmlns="http://docbook.org/ns/docbook">
-            <imageobject>
-                <xsl:element name="imagedata">
-                    <xsl:attribute name="fileref">UUID-384623b7-d82a-a689-fe28-db43d5b5a0c4</xsl:attribute>
-                    <xsl:attribute name="image" namespace="xinfo">UUID-384623b7-d82a-a689-fe28-db43d5b5a0c4</xsl:attribute>
-                </xsl:element>
-            </imageobject>
-        </mediaobject>
-        <xsl:apply-templates />
-    </xsl:template>
+  
 
 
 </xsl:transform>
