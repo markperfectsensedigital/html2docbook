@@ -42,25 +42,25 @@
 
     <!-- The content in a topic starts at an element <div class="Content-document">/<div class="section> -->
     <xsl:template match="xhtml:div[@class='Content-document']">
-        <xsl:for-each select="descendant::xhtml:div">
-            <xsl:message>
-                <xsl:value-of select="generate-id(.)"/>
-            </xsl:message>
-        </xsl:for-each>
         <xsl:choose>
             <xsl:when test="string-length($startingheading) = 0">
-                <xsl:apply-templates select="child::xhtml:div[@class='section'][1]" />
+                <xsl:apply-templates mode="firstheading" />
             </xsl:when>
             <xsl:otherwise>
-                <xsl:message>Matching nodes: <xsl:value-of select="generate-id(descendant::*[text()=$topic_title][1]/..)" />
-                </xsl:message>
-                <xsl:apply-templates select="descendant::*[text()=$topic_title][1]/.."/>
+                <!-- <xsl:message>Matching nodes: <xsl:value-of select="generate-id(descendant::*[text()=$topic_title][1]/..)" />
+                </xsl:message> -->
+                <xsl:apply-templates select="descendant::*[text()=$topic_title][1]/.." mode="otherheadings"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
-    <xsl:template match="xhtml:div[@class='section']">
-        <xsl:message>In section <xsl:value-of select="generate-id(.)"/></xsl:message>
+    <xsl:template match="xhtml:div[@class='section']" mode="firstheading">
+        <xsl:message>In first heading</xsl:message>
+        <xsl:apply-templates select="child::* except child::xhtml:div[@class='section']"/>
+    </xsl:template>
+
+    <xsl:template match="xhtml:div[@class='section']" mode="otherheadings">
+        <!-- <xsl:message>In section <xsl:value-of select="generate-id(.)"/></xsl:message> -->
         <xsl:apply-templates />
     </xsl:template>
 
