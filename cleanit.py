@@ -15,6 +15,7 @@ for line in infile:
     newline = line
     newline = re.sub("&&","",newline)
     newline = re.sub("&l=","",newline)
+    newline = re.sub("&times;","",newline)
     newline = re.sub("’","'",newline)
     newline = re.sub("“","\"",newline)
     newline = re.sub("”","\"",newline)
@@ -41,6 +42,7 @@ for line in infile:
 
 
     newline = re.sub("data-docsearch-input","",newline)
+    newline = re.sub("hidden","",newline)
     newline = re.sub("<option selected>","<option selected=\"selected\">",newline)
 
 
