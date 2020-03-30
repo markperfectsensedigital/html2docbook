@@ -31,6 +31,7 @@
             <xsl:when test="@href and not(@class)">
                 <xsl:element name="link" namespace="http://docbook.org/ns/docbook">
                     <xsl:attribute name="xlink:href"><xsl:value-of select="@href"/></xsl:attribute>
+                    <xsl:apply-templates />
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>

@@ -44,25 +44,21 @@
     <xsl:template match="xhtml:div[@class='Content-document']">
         <xsl:choose>
             <xsl:when test="string-length($startingheading) = 0">
-                <xsl:apply-templates mode="firstheading" />
+                <xsl:apply-templates  />
             </xsl:when>
             <xsl:otherwise>
                 <!-- <xsl:message>Matching nodes: <xsl:value-of select="generate-id(descendant::*[text()=$topic_title][1]/..)" />
                 </xsl:message> -->
-                <xsl:apply-templates select="descendant::*[text()=$topic_title][1]/.." mode="otherheadings"/>
+                <xsl:apply-templates select="descendant::*[text()=$topic_title][1]/.." />
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
-    <xsl:template match="xhtml:div[@class='section']" mode="firstheading">
+    <xsl:template match="xhtml:div[@class='section']" >
         <xsl:message>In first heading</xsl:message>
         <xsl:apply-templates select="child::* except child::xhtml:div[@class='section']"/>
     </xsl:template>
 
-    <xsl:template match="xhtml:div[@class='section']" mode="otherheadings">
-        <!-- <xsl:message>In section <xsl:value-of select="generate-id(.)"/></xsl:message> -->
-        <xsl:apply-templates />
-    </xsl:template>
 
 
     <!-- Set the title from h1 -->
