@@ -64,6 +64,15 @@
             <xsl:when test="starts-with(../preceding-sibling::xhtml:p[1]/xhtml:strong,'To ')">
                 <!-- <xsl:message>Entering li</xsl:message> -->
                 <step xmlns="http://docbook.org/ns/docbook">
+                <para>
+                    <xsl:apply-templates/>
+                    </para>
+                </step>
+            </xsl:when>
+            <!-- substeps in a procedure -->
+            <xsl:when test="parent::xhtml:ol/parent::xhtml:li/parent::xhtml:ol">
+                <!-- <xsl:message>Entering li</xsl:message> -->
+                <step xmlns="http://docbook.org/ns/docbook">
                     <xsl:apply-templates/>
                 </step>
             </xsl:when>

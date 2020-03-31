@@ -2,8 +2,6 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
   xmlns:xhtml="http://www.w3.org/1999/xhtml" 
   xmlns:omg="http://www.lautman.net" 
-      xmlns:e="http://ns.expertinfo.se/cms/xmlns/export/1.0"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0" version="2.0" exclude-result-prefixes="xhtml xinfo">
   <xsl:output indent="yes" method="xml"/>
 
@@ -26,10 +24,10 @@
 
   <xsl:template match="xhtml:img">
     <xsl:variable name="UUID">
-      <xsl:variable name="target_filename" select="substring-after(@src,'_images/')"/>
-      <xsl:variable name="resources" select="document('resource-3396.xml')//e:resource[@title=$target_filename]" />
+      <xsl:call-template name="get_uuid">
 
-      <xsl:value-of select="$resources/@uuid" />
+        <xsl:with-param name="filename" select="substring-after(@src,'_images/')"/>
+      </xsl:call-template>
     </xsl:variable>
     <mediaobject xmlns="http://docbook.org/ns/docbook">
       <imageobject>
@@ -46,7 +44,7 @@
                 <xsl:value-of select="omg:getCssProperty(@style,'width:')"/>
               </xsl:attribute>
             </xsl:if>
-            <xsl:if test="contains(@style,'height:')">
+                        <xsl:if test="contains(@style,'height:')">
               <xsl:attribute name="contentdepth">
                 <xsl:value-of select="omg:getCssProperty(@style,'height:')"/>
               </xsl:attribute>

@@ -49,10 +49,9 @@ for line in infile:
     newline = re.sub("data-docsearch-input","",newline)
     newline = re.sub("hidden","",newline)
     newline = re.sub("<option selected>","<option selected=\"selected\">",newline)
+    newline = re.sub("&nbsp;"," ",newline)
+    
 
-
- #   if newline.startswith("<html xmlns="):
- #       outfile.write('[<!ENTITY nbsp "&#160;">]>')
     outfile.write(newline)
 
 infile.close()

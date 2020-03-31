@@ -8,6 +8,7 @@
     <xsl:include href="code_samples.xsl"/>
     <xsl:include href="lists.xsl"/>
     <xsl:include href="admonitions.xsl"/>
+    <xsl:include href="image_variables.xsl"/>
     <xsl:output indent="yes" method="xml"/>
 
     <xsl:param name="startingheading"/>
@@ -52,7 +53,7 @@
         </xsl:choose>
     </xsl:template>
 
-    <xsl:template match="xhtml:div[@class='section']" >
+    <xsl:template match="xhtml:div[@class='section']">
         <xsl:apply-templates select="child::* except child::xhtml:div[@class='section']"/>
     </xsl:template>
 
@@ -71,6 +72,7 @@
 -->
     <!-- <xsl:template match="xhtml:p[not(starts-with(./child::xhtml:strong[1],'To '))]"> -->
     <xsl:template match="xhtml:p">
+        <xsl:message>inside p</xsl:message>
         <xsl:choose>
             <xsl:when test="(starts-with(./child::xhtml:strong[1],'To ')) or 
             (@class = 'first admonition-title')">
@@ -81,9 +83,8 @@
                 </para>
             </xsl:otherwise>
         </xsl:choose>
-
-
     </xsl:template>
+
 
     <!-- Different templates for different <strong> contexts.
     If the <strong> starts with 'To ' (as in 'To create an article'), then
@@ -99,10 +100,14 @@
     <xsl:template match="xhtml:strong[not(starts-with(.,'To '))]">
         <xsl:choose>
             <xsl:when test="./text() = 'See also:'">
-                <xsl:element name="phrase">
-                    <xsl:attribute name="varset" namespace="xinfo">446</xsl:attribute>
-                    <xsl:attribute name="variable" namespace="xinfo">6</xsl:attribute>
-                </xsl:element>
+                <itemizedlist xmlns="http://docbook.org/ns/docbook">
+                    <title>
+                        <xsl:element name="phrase">
+                            <xsl:attribute name="varset" namespace="xinfo">446</xsl:attribute>
+                            <xsl:attribute name="variable" namespace="xinfo">6</xsl:attribute>
+                        </xsl:element>
+                    </title>
+                </itemizedlist>
             </xsl:when>
             <xsl:otherwise>
                 <emphasis xmlns="http://docbook.org/ns/docbook" role="bold">
@@ -110,6 +115,46 @@
                 </emphasis>
             </xsl:otherwise>
         </xsl:choose>
+    </xsl:template>
+
+
+    <xsl:template match="xhtml:dl[@class='glossary docutils']">
+        <xsl:message>inside a</xsl:message>
+        <glossary xmlns="http://docbook.org/ns/docbook">
+            <xsl:apply-templates />
+        </glossary>
+    </xsl:template>
+
+
+    <xsl:template match="xhtml:dt">
+        <xsl:message>inside x</xsl:message>
+        <glossentry xmlns="http://docbook.org/ns/docbook">
+            <glossterm xmlns="http://docbook.org/ns/docbook">
+                <xsl:value-of select="." />
+            </glossterm>
+
+            <xsl:apply-templates select="following-sibling::xhtml:dd[1]" mode="glossary" />
+
+        </glossentry>
+    </xsl:template>
+
+    <xsl:template match="xhtml:dd" mode="glossary">
+        <glossdef xmlns="http://docbook.org/ns/docbook">
+            <xsl:choose>
+                <xsl:when test="child::xhtml:p">
+                    <xsl:apply-templates />
+                </xsl:when>
+                <xsl:otherwise>
+                    <para xmlns="http://docbook.org/ns/docbook">
+                        <xsl:apply-templates />
+                    </para>
+                </xsl:otherwise>
+            </xsl:choose>
+        </glossdef>
+    </xsl:template>
+
+    <xsl:template match="xhtml:dl/xhtml:dd">
+
     </xsl:template>
 
     <!--Suppress generic template -->
