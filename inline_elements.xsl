@@ -23,7 +23,7 @@
     <xsl:template match="xhtml:a">
         <xsl:choose>
         <!-- Process a link to an internal target -->
-            <xsl:when test="contains(@class,'reference internal')">
+            <xsl:when test="@class='reference internal'">
                 <xsl:variable name="target_title" select="xhtml:span"/>
                 <xsl:variable name="resources" select="document('resource-3396.xml')//e:component[@title=$target_title]" />
                
@@ -45,7 +45,7 @@
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:message>WARNING: An a node was not processed</xsl:message>
+                <xsl:apply-templates />
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:template>
