@@ -23,10 +23,7 @@
   </xsl:template>
 
   <xsl:template match="xhtml:img">
-    <xsl:message>Calling template with filename <xsl:value-of select="substring-after(@src,'_images/')"/>
-    </xsl:message>
     <xsl:variable name="UUID">
-
       <xsl:call-template name="get_uuid">
 
         <xsl:with-param name="filename" select="substring-after(@src,'_images/')"/>
@@ -48,7 +45,7 @@
               </xsl:attribute>
             </xsl:if>
                         <xsl:if test="contains(@style,'height:')">
-              <xsl:attribute name="contentheight">
+              <xsl:attribute name="contentdepth">
                 <xsl:value-of select="omg:getCssProperty(@style,'height:')"/>
               </xsl:attribute>
             </xsl:if>

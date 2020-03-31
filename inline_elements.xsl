@@ -2,7 +2,9 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:xhtml="http://www.w3.org/1999/xhtml" 
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    xmlns:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0" version="2.0" exclude-result-prefixes="xhtml xinfo">
+    xmlns:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0" 
+    xmlns:e="http://ns.expertinfo.se/cms/xmlns/export/1.0"
+    version="2.0" exclude-result-prefixes="xhtml xinfo">
     <xsl:output indent="yes" method="xml"/>
 
 
@@ -22,7 +24,15 @@
         <xsl:choose>
         <!-- Process a link to an internal target -->
             <xsl:when test="contains(@class,'reference internal')">
-                <xsl:apply-templates />
+                <xsl:variable name="target_title" select="xhtml:span"/>
+                <xsl:variable name="resources" select="document('resource-3396.xml')//e:component[@title=$target_title]" />
+               
+                <xsl:variable name="resource_id" select="$resources/@id" />
+                <xsl:element name="xref" namespace="xmlns:xlink">
+                    <xsl:attribute name="xlink:href">
+                        <xsl:value-of select="concat('urn:resource:component:',$resource_id)" />
+                    </xsl:attribute>
+                </xsl:element>
             </xsl:when>
             <!-- Toss shareable links to interhal headers (the ones with the paragraph symbol) -->
             <xsl:when test="@class='headerlink'">

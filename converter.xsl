@@ -48,15 +48,12 @@
                 <xsl:apply-templates  />
             </xsl:when>
             <xsl:otherwise>
-                <!-- <xsl:message>Matching nodes: <xsl:value-of select="generate-id(descendant::*[text()=$topic_title][1]/..)" />
-                </xsl:message> -->
                 <xsl:apply-templates select="descendant::*[text()=$topic_title][1]/.." />
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
     <xsl:template match="xhtml:div[@class='section']" >
-        <xsl:message>In first heading</xsl:message>
         <xsl:apply-templates select="child::* except child::xhtml:div[@class='section']"/>
     </xsl:template>
 
