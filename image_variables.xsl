@@ -148,6 +148,11 @@ xmlns:xhtml="http://www.w3.org/1999/xhtml"
             <xsl:when test="$filename='state3_wfTab.png'">UUID-65609592-d989-49c5-303b-064e56a8fbf1</xsl:when>
             <xsl:when test="$filename='state4a_header.png'">UUID-446abafa-0bf6-e184-733c-7e60d6b992da</xsl:when>
 
+            <!-- 3.2, Image Editing -->
+
+            <xsl:when test="$filename='focus-tab.gif'">UUID-efbb80fe-ff65-e704-7980-96dd5ace0c45</xsl:when>
+            <xsl:when test="$filename='image-editing.jpg'">UUID-357ff739-7df9-474f-543c-1487bbb49b58</xsl:when>
+            <xsl:when test="$filename='text-overlay.gif'">UUID-ab334369-4e92-c5bf-4387-0902f6cc4c81</xsl:when>
 
 
             <xsl:otherwise>

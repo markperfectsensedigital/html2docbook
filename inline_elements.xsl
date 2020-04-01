@@ -50,7 +50,13 @@
             </xsl:choose>
         </xsl:template>
 
+    <xsl:template match="xhtml:em">
+       
+                <emphasis xmlns="http://docbook.org/ns/docbook">
+                    <xsl:apply-templates />
+                </emphasis>
 
+    </xsl:template>
 
 
     </xsl:transform>
