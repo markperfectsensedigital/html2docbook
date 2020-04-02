@@ -72,6 +72,10 @@
 
     <xsl:template match="xhtml:td">
         <td xmlns="http://docbook.org/ns/docbook">
+        <xsl:if test="@colspan > 1">
+                <xsl:attribute name="colspan"><xsl:value-of select="@colspan"/></xsl:attribute>
+        </xsl:if>
+
         <para xmlns="http://docbook.org/ns/docbook">
             <xsl:apply-templates />
             </para>
