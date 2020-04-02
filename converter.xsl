@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:xhtml="http://www.w3.org/1999/xhtml" 
-    xmlns:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0" version="2.0" exclude-result-prefixes="xhtml xinfo">
+    xmlns:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0" version="2.0" exclude-result-prefixes="xhtml xinfo"
+    xpath-default-namespace="http://www.w3.org/1999/xhtml">
+
     <xsl:include href="tables.xsl"/>
     <xsl:include href="images.xsl"/>
     <xsl:include href="inline_elements.xsl"/>
@@ -43,12 +45,13 @@
 
     <!-- The content in a topic starts at an element <div class="Content-document">/<div class="section> -->
     <xsl:template match="xhtml:div[@class='Content-document']">
+
         <xsl:choose>
             <xsl:when test="string-length($startingheading) = 0">
                 <xsl:apply-templates  />
             </xsl:when>
             <xsl:otherwise>
-                <xsl:apply-templates select="descendant::*[text()=$topic_title][1]/.." />
+                <xsl:apply-templates select="descendant::*[text()=$topic_title]/parent::xhtml:div[@class='section']" />
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -72,7 +75,6 @@
 -->
     <!-- <xsl:template match="xhtml:p[not(starts-with(./child::xhtml:strong[1],'To '))]"> -->
     <xsl:template match="xhtml:p">
-        <xsl:message>inside p</xsl:message>
         <xsl:choose>
             <xsl:when test="(starts-with(./child::xhtml:strong[1],'To ')) or 
             (@class = 'first admonition-title')">
@@ -119,7 +121,6 @@
 
 
     <xsl:template match="xhtml:dl[@class='glossary docutils']">
-        <xsl:message>inside a</xsl:message>
         <glossary xmlns="http://docbook.org/ns/docbook">
             <xsl:apply-templates />
         </glossary>
@@ -127,7 +128,6 @@
 
 
     <xsl:template match="xhtml:dt">
-        <xsl:message>inside x</xsl:message>
         <glossentry xmlns="http://docbook.org/ns/docbook">
             <glossterm xmlns="http://docbook.org/ns/docbook">
                 <xsl:value-of select="." />
@@ -153,8 +153,18 @@
         </glossdef>
     </xsl:template>
 
-    <xsl:template match="xhtml:dl/xhtml:dd">
+    <!-- <xsl:template match="xhtml:div[@class='line-block']">
+        <xsl:apply-templates />
+    </xsl:template>
 
+    <xsl:template match="xhtml:div[@class='line']">
+        <para>
+            <xsl:apply-templates />
+        </para>
+    </xsl:template> -->
+
+
+    <xsl:template match="xhtml:dl/xhtml:dd">
     </xsl:template>
 
     <!--Suppress generic template -->
