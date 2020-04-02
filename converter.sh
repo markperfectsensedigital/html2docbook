@@ -30,6 +30,13 @@ if [ $? -ne 0 ]; then
     echo "Could not clean file. Try again."
     exit
 fi
-OUTPUTFILE='docbook.xml'
-saxon -s:/Users/mlautman/Documents/paligo/converter/cleanfile.html -xsl:/Users/mlautman/Documents/paligo/converter/converter.xsl -o:$OUTPUTFILE startingheading="$2"
-echo "Output in $OUTPUTFILE"
+
+HEADINGCOMMAND=`saxon -s:cleanfile.html -xsl:heading_maker.xsl`
+echo $HEADINGCOMMAND
+eval $HEADINGCOMMAND
+for i in "${heading[@]}"; do 
+
+  OUTPUTFILE="docbooks/$i.xml"
+  echo "Processing heading $i into $OUTPUTFILE"
+  saxon -s:/Users/mlautman/Documents/paligo/converter/cleanfile.html -xsl:/Users/mlautman/Documents/paligo/converter/converter.xsl -o:"$OUTPUTFILE" startingheading="$i" 2>/dev/null
+done

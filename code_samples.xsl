@@ -30,7 +30,7 @@
         <xsl:message><xsl:value-of select="../../@class"/></xsl:message>
         <xsl:message><xsl:value-of select="concat($language-class[1],' ',$highlightlanguage,' ',$language)"/></xsl:message>
         <programlisting xmlns="http://docbook.org/ns/docbook">
-            <xsl:attribute name="lang">
+            <xsl:attribute name="language">
                 <xsl:value-of select="$language" />
             </xsl:attribute>
             <xsl:apply-templates />

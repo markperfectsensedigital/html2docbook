@@ -60,14 +60,11 @@
         <xsl:apply-templates select="child::* except child::xhtml:div[@class='section']"/>
     </xsl:template>
 
-
-
     <!-- Set the title from h1 -->
     <xsl:template match="xhtml:h1|xhtml:h2|xhtml:h3|xhtml:h4">
         <xsl:element name="title" namespace="http://docbook.org/ns/docbook">
             <xsl:value-of select="text()" />
         </xsl:element>
-
     </xsl:template>
 
     <!-- If the <p> is followed by an <ol>, then we assume that this paragraph starts a procedure. 
