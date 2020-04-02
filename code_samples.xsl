@@ -23,7 +23,16 @@
 
     <!-- Code sample, no highlighting or heading or numbers -->
     <xsl:template match="xhtml:div[matches(@class,'highlight-\S+ notranslate')]/xhtml:div[@class='highlight']/xhtml:pre">
+    <xsl:message>Starting</xsl:message>
+        <xsl:variable name="language-class" select="tokenize(../../@class,' ')"/>
+        <xsl:variable name="highlightlanguage" select="$language-class[1]" />
+        <xsl:variable name="language" select="substring-after($highlightlanguage,'highlight-')" />
+        <xsl:message><xsl:value-of select="../../@class"/></xsl:message>
+        <xsl:message><xsl:value-of select="concat($language-class[1],' ',$highlightlanguage,' ',$language)"/></xsl:message>
         <programlisting xmlns="http://docbook.org/ns/docbook">
+            <xsl:attribute name="lang">
+                <xsl:value-of select="$language" />
+            </xsl:attribute>
             <xsl:apply-templates />
         </programlisting>
 
