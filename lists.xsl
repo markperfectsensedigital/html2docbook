@@ -79,7 +79,9 @@
             <!-- In other cases, assume this <li> is a <listitem> in an ordered list. -->
             <xsl:otherwise>
                 <listitem xmlns="http://docbook.org/ns/docbook">
+                <para xmlns="http://docbook.org/ns/docbook">
                     <xsl:apply-templates />
+                    </para>
                 </listitem>
             </xsl:otherwise>
         </xsl:choose>

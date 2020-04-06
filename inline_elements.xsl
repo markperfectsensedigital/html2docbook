@@ -4,15 +4,14 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0" 
     xmlns:e="http://ns.expertinfo.se/cms/xmlns/export/1.0"
-    version="2.0" exclude-result-prefixes="xhtml xinfo">
+    version="2.0" exclude-result-prefixes="xhtml xinfo xlink e">
     <xsl:output indent="yes" method="xml"/>
 
 
-    <xsl:template match="xhtml:code/xhtml:span[@class='pre']">
+    <xsl:template match="xhtml:code/xhtml:span[@class='pre'] | xhtml:cite">
         <code xmlns="http://docbook.org/ns/docbook">
             <xsl:apply-templates />
         </code>
-
     </xsl:template>
 
 
@@ -38,7 +37,7 @@
             <xsl:when test="@class='headerlink'">
             </xsl:when>
             <!-- Links to external web sites-->
-            <xsl:when test="@href and not(@class)">
+            <xsl:when test="(@href and not(@class)) or (@href and (@class='reference external'))">
                 <xsl:element name="link" namespace="http://docbook.org/ns/docbook">
                     <xsl:attribute name="xlink:href"><xsl:value-of select="@href"/></xsl:attribute>
                     <xsl:apply-templates />

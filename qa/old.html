@@ -1,0 +1,128 @@
+<h1>Release Notes 3.0<a class="headerlink" href="#release-notes-3-0" title="Permalink to this headline">¶</a></h1>
+<p>Brightspot 3.0 has a new look and feel, substantial improvements to the user interface and search functionality, and numerous other improvements.</p>
+<p><strong>Released:</strong> 07-15-2015</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.brightspot.com/docs/3.0/overview/installation">Installation Instructions</a></li>
+<li><a class="reference external" href="http://www.brightspot.com/developer-support-documentation">Documentation</a></li>
+<li><a class="reference external" href="http://www.brightspot.com/docs/2.4/brightspot-releases/release-notes">Release Notes for Earlier Releases</a></li>
+</ul>
+<div class="section" id="new-look-and-feel">
+<h2>New Look and Feel<a class="headerlink" href="#new-look-and-feel" title="Permalink to this headline">¶</a></h2>
+<p>Brightspot now has a flatter, more material design. The UI presents more options without disruption or requiring the user to switch to new screens. It also uses tabs more extensively to ease spacing.</p>
+</div>
+<div class="section" id="new-features">
+<h2>New Features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="user-dashboard-controls">
+<h3>User Dashboard Controls<a class="headerlink" href="#user-dashboard-controls" title="Permalink to this headline">¶</a></h3>
+<p>A new user dashboard system allows each user to customize his or her own dashboard layout, including the Common Content widget’s settings. Defaults can now be set by site and role.</p>
+<p>Dashboard widget positions can be stored for multiple dashboards.</p>
+</div>
+<div class="section" id="selections">
+<h3>Selections<a class="headerlink" href="#selections" title="Permalink to this headline">¶</a></h3>
+<p>Brightspot now allows multiple pieces of content of the same type to be selected in search results and quickly manipulated: bulk-edited, bulk-deleted, etc.</p>
+<p>Developers can now customize Brightspot so that multiple selected pieces of content even be selected and formed into content types designed to hold them. For example, images can be collected into galleries, songs into play lists, and so on, provided the collected content pieces fit into the fields of the collection.</p>
+</div>
+<div class="section" id="search-results-carousel">
+<h3>Search Results Carousel<a class="headerlink" href="#search-results-carousel" title="Permalink to this headline">¶</a></h3>
+<p>A new carousel has been implemented to show the results of a search. Each result is represented by a slide in the carousel. By shifting slides, you can open a result in the content editor without losing the list of search results.</p>
+<img alt="../../_images/search-results-carousel.png" src="../../_images/search-results-carousel.png" />
+<p>Developers can allow the preview image used in the carousel to be customizable.</p>
+<p>Developers can customize search results suggestions.</p>
+</div>
+</div>
+<div class="section" id="improved-features">
+<h2>Improved Features<a class="headerlink" href="#improved-features" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="search-panel">
+<h3>Search Panel<a class="headerlink" href="#search-panel" title="Permalink to this headline">¶</a></h3>
+<p>The search panel has a new look and feel. Its design is more material, and it runs more quickly.</p>
+<p>The search panel can be used to bulk restore items.</p>
+<p>The search results action section now shows previews of selected search results, indicating the items that will be acted on when a search results action is selected.</p>
+<p>Searches can now be saved for easy repeating and limited to a set number of results.</p>
+<p>Search results have been improved. They can now:</p>
+<ul class="simple">
+<li>be saved for easy repeating.</li>
+<li>be multi-selected and created into a work stream.</li>
+<li>be exported in CSV format.</li>
+<li>be used to create drafts of new content, so that the existing content is used as a starting point. For example, three images could be selected to create an image gallery, which would then include those three images.</li>
+<li>be viewed in an infinite scroll pagination, if they are previewable and viewed in grid mode.</li>
+</ul>
+<p>The Show Missing option has been removed because it confused some users and was redundant. Content with a particular field left empty can be found using the advanced query feature.</p>
+<p>Java interfaces and abstract classes can be searched as content types, so that any content types that implement/extend the particular interface or abstract class will be found by search for the interface or abstract class. For example, if movie review articles and book review articles both implement the review interface, a search for reviews will find both movie reviews and book reviews.</p>
+</div>
+<div class="section" id="content-and-enhancements">
+<h3>Content and Enhancements<a class="headerlink" href="#content-and-enhancements" title="Permalink to this headline">¶</a></h3>
+<p>The UI has a flatter, more material design.</p>
+<p>Maps now support creating and saving circular regions.</p>
+<p>Focus points can be added to images and saved as metadata with the image.</p>
+<p>Brightspot now supports social networks that do not support oEmbed including: Facebook, Pinterest, Vine, Instagram, as well as Google Maps when used with the Brightspot-Google plug-in.</p>
+<p>Sub-content can now be visually rearranged in a piece of content when a new annotation is used and the underlying classes are properly configured.</p>
+<p>Permalinks can now be external URLs. Assigning an external URL to a piece of content makes it function as a URL redirect to the URL.</p>
+</div>
+<div class="section" id="guides-usability-improvements">
+<h3>Guides Usability Improvements<a class="headerlink" href="#guides-usability-improvements" title="Permalink to this headline">¶</a></h3>
+<p>A new widget is available for overall/top-level production guides so these can be accessed from the dashboard more easily.</p>
+<p>Page guides are now associated with content types rather than with templates.</p>
+</div>
+<div class="section" id="work-streams">
+<h3>Work Streams<a class="headerlink" href="#work-streams" title="Permalink to this headline">¶</a></h3>
+<p>Work streams can now:</p>
+<ul class="simple">
+<li>process objects that exist only in draft form.</li>
+<li>be created in the search panel from search results.</li>
+<li>include content from multiple sites.</li>
+</ul>
+<p>The work stream widget now displays more information about each work stream.</p>
+</div>
+<div class="section" id="workflow">
+<h3>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h3>
+<p>Pieces of content can now be advanced along their workflow in bulk by contributors with proper permissions.</p>
+</div>
+<div class="section" id="version-control">
+<h3>Version Control<a class="headerlink" href="#version-control" title="Permalink to this headline">¶</a></h3>
+<p>Content locking can be changed to an opt-in feature by administrators. When this setting is enabled, the default for a piece of content is to be unlocked, so each piece of content must be manually locked.</p>
+<p>Unlocking another user’s content now requires an administrative permission.</p>
+</div>
+<div class="section" id="login-screen-customization">
+<h3>Login Screen Customization<a class="headerlink" href="#login-screen-customization" title="Permalink to this headline">¶</a></h3>
+<p>Administrators can now add placeholders and a background image to the login page.</p>
+</div>
+<div class="section" id="amazon-s3-uploader">
+<h3>Amazon S3 Uploader<a class="headerlink" href="#amazon-s3-uploader" title="Permalink to this headline">¶</a></h3>
+<p>Brightspot now provides an uploader that works directly with Amazon S3 storage. It can be enabled in Admin settings.</p>
+</div>
+</div>
+<div class="section" id="security-improvements">
+<h2>Security Improvements<a class="headerlink" href="#security-improvements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="permissions">
+<h3>Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline">¶</a></h3>
+<p>Bulk editing and unlocking content now have require appropriate permissions.</p>
+</div>
+<div class="section" id="forgotten-passwords">
+<h3>Forgotten Passwords<a class="headerlink" href="#forgotten-passwords" title="Permalink to this headline">¶</a></h3>
+<p>Forgotten password functionality has been improved to help prevent attempts to spam email inboxes.</p>
+</div>
+<div class="section" id="two-factor-authentication">
+<h3>Two Factor Authentication<a class="headerlink" href="#two-factor-authentication" title="Permalink to this headline">¶</a></h3>
+<p>Two-factor authentication has been improved to make it easier to use.</p>
+</div>
+</div>
+<div class="section" id="architecture-and-development-changes">
+<h2>Architecture and Development Changes<a class="headerlink" href="#architecture-and-development-changes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="new-annotations">
+<h3>New Annotations<a class="headerlink" href="#new-annotations" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;Seo.TitleFields(&quot;field&quot;)</span></code>, a new annotation, annotates a class and designates which member field or fields provide the default SEO title for pieces of content of the annotated content type. Using this annotation, the user-supplied values for the specified fields become the default SEO title.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;ToolUi.LayoutPlaceholder</span></code>, a new annotation, annotates a class and allows it to visually rearrange the relative layout of sub-content.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;SearchResultSelectionGeneratable.ItemTypes</span></code> is a new annotation that works with the new SearchResultSelectionGeneratable interface to allow multiple pieces of content of the same type to be selected in search results and quickly be formed into qualifying collections right in the search panel.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;Indexed</span></code> can now be applied to class methods so they are found in searches.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;ToolUi.Hidden(false)</span></code> can now be applied to interfaces and abstract classes so that a search for an interface or abstract class will find all classes that implement/extend it.</p>
+</div>
+<div class="section" id="new-classes-and-interfaces">
+<h3>New Classes and Interfaces<a class="headerlink" href="#new-classes-and-interfaces" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">DashboardWidget</span></code> is an abstract class for creating new dashboard widgets.</p>
+<p><code class="docutils literal notranslate"><span class="pre">SearchResultSelectionGeneratable</span></code> is a new interface that can be used with a new annotation (&#64;SearchResultSelectionGeneratable.ItemTypes) to allow multiple pieces of content of the same type to be selected in search results and quickly be formed into qualifying collections right in the search panel.</p>
+<p><code class="docutils literal notranslate"><span class="pre">SearchCarouselPreviewable</span></code> makes it possible to specify the image used to preview a piece of content in the search carousels.</p>
+<p>A new Java interface, <code class="docutils literal notranslate"><span class="pre">SearchCarouselPreviewable</span></code>, makes it possible to select an preview image to use for pieces of content when they appear in the search results carousel.</p>
+<p>The new <code class="docutils literal notranslate"><span class="pre">SearchResultSuggester</span></code> interface allows the creation of custom search result suggestions.</p>
+</div>
+</div>
+</div>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+         xmlns:ns0="xmlns"
+         xmlns:ns0_3="xml"
+         xmlns:ns0_4="xinfo"
+         xmlns:ns0_5="xinfo"
+         xmlns:ns0_6="xinfo"
+         xmlns:ns0_7="xinfo"
+         xmlns:ns0_8="xinfo"
+         ns0:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0"
+         version="5.0"
+         ns0_3:lang="en"
+         ns0_4:resource-type="component"
+         ns0_5:resource-title="Step 1: Opening a Blank Styleguide"
+         ns0_6:resource-titlelabel=""
+         ns0_7:version-major="2"
+         ns0_8:version-minor="0">
+   <title>Step 1: Opening a Blank Styleguide</title>
+   <para>Brightspot maintains views inside a styleguide. In this step, you run and open the blank styleguide.</para>
+   <procedure>
+      <step>
+         <para>Ensure port 3000 on your local machine is open.</para>
+      </step>
+      <step>
+         <para>Open a new command prompt (Windows) or Terminal (Mac/*nix), and change the current directory to <code>brightspot-tutorial/</code>.</para>
+      </step>
+      <step>
+         <para>Run <code>gulp</code>
+            <code>styleguide</code>. A server starts.</para>
+      </step>
+      <step>
+         <para>In your web browser, open http://localhost:3000/_styleguide. An empty styleguide appears.</para>
+      </step>
+   </procedure>
+
+</section>
