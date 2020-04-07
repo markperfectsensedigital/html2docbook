@@ -3,11 +3,16 @@ from bs4 import BeautifulSoup
 import re
 from textwrap import wrap
 
-with open('/Users/mlautman/Documents/docs/_build/html/cms/developers-guide/installation/advanced.html', 'r') as oldfile:
+original_base = '/Users/mlautman/Documents/docs/_build/html/'
+new_base = '/private/tmp/2020-04-07_10-12-18/3469-Support_and_Documentation_3_2-html5/out/en/'
+
+original_path = original_base + 'cms/developers-guide/intro/index.html'
+new_path = new_base + 'developer-guide/introduction.html'
+
+with open(original_path, 'r') as oldfile:
     oldhtml = oldfile.read()
 
-
-with open('/private/tmp/2020-04-07_10-12-18/3469-Support_and_Documentation_3_2-html5/out/en/developer-guide/installation/advanced-installation.html', 'r') as newfile:
+with open(new_path, 'r') as newfile:
     newhtml = newfile.read()
 
 oldfile.close()
@@ -17,6 +22,17 @@ newfile.close()
 line_end = re.compile(r'\n')
 oldhtml = re.sub(line_end, '', oldhtml)
 newhtml = re.sub(line_end, '', newhtml)
+
+#titles = re.findall(r'<li class="toctree-l\d"><a class="reference internal" href=".*?html.*?">.*?</a>',oldhtml)
+#for i in titles: 
+#    keyvalue = re.findall(r'href="(.*?html)">(.*)</a>',i)
+#    if (keyvalue):
+#      print(i)
+#        print(keyvalue)
+
+
+#print('\n'.join(titles))
+
 
 # Trash ancillary content from old.html
 head_pattern = re.compile(r'<head>.*</head>')
@@ -131,8 +147,22 @@ with open('/tmp/new_wrap.txt', 'w') as f:
 f.close()
 
 
-print(oldmetrics.items())
-print(newmetrics.items())
+with open('/tmp/results.csv', 'w') as f:
+
+    f.write("Results:\n")
+    f.write('\t' + '\t'.join(oldmetrics.keys()) + '\n')
+    f.write("Advanced Installation\n")
+
+    f.write(original_path + '\t')
+    f.write('\t'.join(map(str,oldmetrics.values())) + '\n')
+    f.write(new_path + '\t')
+    f.write('\t'.join(map(str,newmetrics.values())) + '\n')
+
+f.close()
+
+
+#print(oldmetrics.items())
+#print(newmetrics.items())
 
 print('aldone')
 
