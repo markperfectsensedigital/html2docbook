@@ -2,12 +2,23 @@
 from bs4 import BeautifulSoup
 import re
 from textwrap import wrap
+import os
+from create_crossref import comparisons
 
 original_base = '/Users/mlautman/Documents/docs/_build/html/'
 new_base = '/private/tmp/2020-04-07_10-12-18/3469-Support_and_Documentation_3_2-html5/out/en/'
 
-original_path = original_base + 'cms/developers-guide/intro/index.html'
-new_path = new_base + 'developer-guide/introduction.html'
+original_path = original_base + 'cms/developers-guide/installation/advanced.html'
+new_path = new_base + 'developer-guide/installation/advanced-installation.html'
+
+lookup_table = comparisons()
+#print(lookup_table)
+#for i in lookup_table:
+#    print(i)
+#exit()
+
+for entry in lookup_table:
+    print("Processing " + entry[0])
 
 with open(original_path, 'r') as oldfile:
     oldhtml = oldfile.read()
@@ -22,17 +33,6 @@ newfile.close()
 line_end = re.compile(r'\n')
 oldhtml = re.sub(line_end, '', oldhtml)
 newhtml = re.sub(line_end, '', newhtml)
-
-#titles = re.findall(r'<li class="toctree-l\d"><a class="reference internal" href=".*?html.*?">.*?</a>',oldhtml)
-#for i in titles: 
-#    keyvalue = re.findall(r'href="(.*?html)">(.*)</a>',i)
-#    if (keyvalue):
-#      print(i)
-#        print(keyvalue)
-
-
-#print('\n'.join(titles))
-
 
 # Trash ancillary content from old.html
 head_pattern = re.compile(r'<head>.*</head>')
@@ -166,6 +166,61 @@ f.close()
 
 print('aldone')
 
+exit()
 
 # diff -wBi old.txt new.txt 
 
+
+def comparisons():
+  
+    developer_docs = os.walk('/Users/mlautman/Documents/docs/_build/html/cms/developers-guide')
+    #print(developer_docs)
+    master_topic_list={}
+    for directories in developer_docs:
+        for files in directories[2]:
+            localfilename = directories[0] + '/' + files
+ #          print(localfilename)
+            if not '.DS_Store' in localfilename:
+                with open(localfilename, 'r') as localfile:
+                    localhtml = localfile.read()
+                localfile.close()
+            # print(localhtml)
+                match = re.search('<h1>(.*)<a class="headerlink" ', localhtml)
+                if match:
+                    master_topic_list[localfilename] = match.group(1)
+                    #print('found', match.group(1)) ## 'found word:cat'
+                else:
+                    print('did not find')
+
+#print(master_topic_list.items())
+
+
+    developer_docs = os.walk('/private/tmp/2020-04-07_10-12-18/3469-Support_and_Documentation_3_2-html5/out/en/developer-guide')
+    #print(developer_docs)
+    new_topic_list={}
+    for directories in developer_docs:
+        for files in directories[2]:
+            localfilename = directories[0] + '/' + files
+            #print(localfilename)
+            if not '.DS_Store' in localfilename:
+                with open(localfilename, 'r') as localfile:
+                    localhtml = localfile.read()
+                localfile.close()
+            # print(localhtml)
+                match = re.search('<title>(.*)</title>', localhtml)
+                if match:
+                    new_topic_list[match.group(1)] = localfilename
+                    #print('found', match.group(1)) ## 'found word:cat'
+                else:
+                    print('did not find')
+
+#print(master_topic_list.items())
+#print(new_topic_list.items())
+
+    lookup_table = []
+    for filename,title in master_topic_list.items():
+        try:
+            lookup_table.append(title,filename,new_topic_list[title])
+       # print(title, new_topic_list[title])
+        except KeyError:
+            print("WARNING: No new topic for " + title)
