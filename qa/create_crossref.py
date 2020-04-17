@@ -4,13 +4,18 @@ import os
 
 def comparisons():
   
-    developer_docs = os.walk('/Users/mlautman/Documents/docs/_build/html/cms/developers-guide')
+    old_dir = '/Users/mlautman/Documents/docs/_build/html/cms/editorial-guide/'
+    if not os.path.isdir(old_dir):
+        print (old_dir + ' is not a directory. Exiting')
+        exit()
+
+    developer_docs = os.walk(old_dir)
     #print(developer_docs)
     master_topic_list={}
     for directories in developer_docs:
         for files in directories[2]:
             localfilename = directories[0] + '/' + files
- #          print(localfilename)
+            #print(localfilename)
             if not '.DS_Store' in localfilename:
                 with open(localfilename, 'r') as localfile:
                     localhtml = localfile.read()
@@ -21,12 +26,17 @@ def comparisons():
                     master_topic_list[localfilename] = match.group(1)
                     #print('found', match.group(1)) ## 'found word:cat'
                 else:
-                    print('did not find')
+                    print('did not find old topic' )
 
 #print(master_topic_list.items())
 
 
-    developer_docs = os.walk('/private/tmp/2020-04-07_10-12-18/3469-Support_and_Documentation_3_2-html5/out/en/developer-guide')
+    new_dir = '/private/tmp/2020-04-10_10-38-56/3469-Support_and_Documentation_3_2-html5/out/en/editorial-guide'
+    if not os.path.isdir(new_dir):
+        print (new_dir + ' is not a directory. Exiting')
+        exit()
+
+    developer_docs = os.walk(new_dir)
     #print(developer_docs)
     new_topic_list={}
     for directories in developer_docs:
@@ -43,7 +53,7 @@ def comparisons():
                     new_topic_list[match.group(1)] = localfilename
                     #print('found', match.group(1)) ## 'found word:cat'
                 else:
-                    print('did not find')
+                    print('did not find new topic' )
 
 #print(master_topic_list.items())
 #print(new_topic_list.items())

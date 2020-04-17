@@ -1,4 +1,17 @@
 <?xml version="1.0"?>
+<!--
+
+This transform creates a series of <xi:include> tags that you can paste
+into the XML editor.
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml" href="UUID-8f0ad800-5957-21ab-d5d8-ba6cfbb314a3">
+    <xi:fallback>
+      <para xinfo:translate="no">Reusing topic #UUID-8f0ad800-5957-21ab-d5d8-ba6cfbb314a3</para>
+    </xi:fallback>
+  </xi:include>
+
+
+-->
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:e="http://ns.expertinfo.se/cms/xmlns/export/1.0" 
     xmlns:xi="http://www.w3.org/2001/XInclude" 

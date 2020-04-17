@@ -31,7 +31,7 @@ if [ $? -ne 0 ]; then
     exit
 fi
 
-rm docbooks/*
+rm -rf docbooks/*
 HEADINGCOMMAND=`saxon -s:cleanfile.html -xsl:heading_maker.xsl`
 echo $HEADINGCOMMAND
 eval $HEADINGCOMMAND

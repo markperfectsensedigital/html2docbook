@@ -24,7 +24,7 @@
         <!-- Process a link to an internal target -->
             <xsl:when test="@class='reference internal'">
                 <xsl:variable name="target_title" select="xhtml:span"/>
-                <xsl:variable name="resources" select="document('resource-3469.xml')//e:component[@title=$target_title]" />
+                <xsl:variable name="resources" select="document('resource-9821.xml')//e:component[@title=$target_title]" />
                
                 <xsl:variable name="resource_id" select="$resources/@id" />
                 <xsl:element name="xref" namespace="xmlns:xlink">

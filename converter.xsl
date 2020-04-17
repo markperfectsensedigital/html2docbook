@@ -11,6 +11,7 @@
     <xsl:include href="lists.xsl"/>
     <xsl:include href="admonitions.xsl"/>
     <xsl:include href="image_variables.xsl"/>
+    <xsl:include href="glossary.xsl"/>
     <xsl:output indent="yes" method="xml"/>
 
     <xsl:param name="startingheading"/>
@@ -117,39 +118,6 @@
     </xsl:template>
 
 
-    <xsl:template match="xhtml:dl[@class='glossary docutils']">
-        <glossary xmlns="http://docbook.org/ns/docbook">
-            <xsl:apply-templates />
-        </glossary>
-    </xsl:template>
-
-
-    <xsl:template match="xhtml:dt">
-        <glossentry xmlns="http://docbook.org/ns/docbook">
-            <glossterm xmlns="http://docbook.org/ns/docbook">
-                <xsl:value-of select="." />
-            </glossterm>
-
-            <xsl:apply-templates select="following-sibling::xhtml:dd[1]" mode="glossary" />
-
-        </glossentry>
-    </xsl:template>
-
-    <xsl:template match="xhtml:dd" mode="glossary">
-        <glossdef xmlns="http://docbook.org/ns/docbook">
-            <xsl:choose>
-                <xsl:when test="child::xhtml:p">
-                    <xsl:apply-templates />
-                </xsl:when>
-                <xsl:otherwise>
-                    <para xmlns="http://docbook.org/ns/docbook">
-                        <xsl:apply-templates />
-                    </para>
-                </xsl:otherwise>
-            </xsl:choose>
-        </glossdef>
-    </xsl:template>
-
     <!-- <xsl:template match="xhtml:div[@class='line-block']">
         <xsl:apply-templates />
     </xsl:template>
@@ -161,8 +129,8 @@
     </xsl:template> -->
 
 
-    <xsl:template match="xhtml:dl/xhtml:dd">
-    </xsl:template>
+    <!-- <xsl:template match="xhtml:dl/xhtml:dd">
+    </xsl:template> -->
 
     <!--Suppress generic template -->
     <!-- <xsl:template match="text()"/> -->
