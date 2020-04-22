@@ -44,11 +44,16 @@
                 <xsl:value-of select="omg:getCssProperty(@style,'width:')"/>
               </xsl:attribute>
             </xsl:if>
-                        <xsl:if test="contains(@style,'height:')">
+            <xsl:if test="contains(@style,'height:')">
               <xsl:attribute name="contentdepth">
                 <xsl:value-of select="omg:getCssProperty(@style,'height:')"/>
               </xsl:attribute>
             </xsl:if>
+          </xsl:if>
+          <xsl:if test="@width">
+          <xsl:attribute name="contentwidth">
+                <xsl:value-of select="@width"/>
+              </xsl:attribute>
           </xsl:if>
         </xsl:element>
       </imageobject>

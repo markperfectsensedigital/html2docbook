@@ -64,8 +64,8 @@
             <xsl:when test="starts-with(../preceding-sibling::xhtml:p[1]/xhtml:strong,'To ')">
                 <!-- <xsl:message>Entering li</xsl:message> -->
                 <step xmlns="http://docbook.org/ns/docbook">
-                <para>
-                    <xsl:apply-templates/>
+                    <para>
+                        <xsl:apply-templates/>
                     </para>
                 </step>
             </xsl:when>
@@ -76,12 +76,18 @@
                     <xsl:apply-templates/>
                 </step>
             </xsl:when>
+
             <!-- In other cases, assume this <li> is a <listitem> in an ordered list. -->
-            <xsl:otherwise>
+            <xsl:when test="not(child::xhtml:p)">
                 <listitem xmlns="http://docbook.org/ns/docbook">
-                <para xmlns="http://docbook.org/ns/docbook">
-                    <xsl:apply-templates />
+                    <para xmlns="http://docbook.org/ns/docbook">
+                        <xsl:apply-templates />
                     </para>
+                </listitem>
+            </xsl:when>
+            <xsl:otherwise>
+            <listitem xmlns="http://docbook.org/ns/docbook">
+                <xsl:apply-templates/>
                 </listitem>
             </xsl:otherwise>
         </xsl:choose>
@@ -105,7 +111,7 @@
         <!-- <xsl:message>Exiting li</xsl:message> -->
     </xsl:template>
 
-  
+
 
 
 </xsl:transform>

@@ -14,8 +14,8 @@
 # Find attributes with tags that have no = and delete them.
 # Remove namespace declaraiton in <html> tag
 
-if [[ $# -lt 1 ]]; then
-    echo "Usage: convertor.sh input_file.html"
+if [[ $# -lt 2 ]]; then
+    echo "Usage: convertor.sh input_file1.html input_file2.html"
     exit
 fi
 
@@ -24,20 +24,31 @@ if [[ ! -f $1 ]]; then
     exit
 fi
 
+if [[ ! -f $2 ]]; then
+    echo "$2 does not exist. Try again."
+    exit
+fi
 
-./cleanit.py $1
+../cleanit.py "$1"
 if [ $? -ne 0 ]; then
     echo "Could not clean file. Try again."
     exit
 fi
 
-rm -rf docbooks/*
-HEADINGCOMMAND=`saxon -s:cleanfile.html -xsl:heading_maker.xsl`
-echo $HEADINGCOMMAND
-eval $HEADINGCOMMAND
-for i in "${heading[@]}"; do 
+cp cleanfile.html /tmp/old.html
 
-  OUTPUTFILE="docbooks/$i.xml"
-  echo "Processing heading $i into $OUTPUTFILE"
-  saxon -s:/Users/mlautman/Documents/paligo/converter/cleanfile.html -xsl:/Users/mlautman/Documents/paligo/converter/converter.xsl -o:"$OUTPUTFILE" startingheading="$i" 
-done
+../cleanit.py "$2"
+if [ $? -ne 0 ]; then
+    echo "Could not clean file. Try again."
+    exit
+fi
+
+cp cleanfile.html /tmp/new.html
+
+
+saxon -s:/tmp/old.html -xsl:text_extractor.xsl -o:/tmp/old.txt
+saxon -s:/tmp/new.html -xsl:text_extractor.xsl -o:/tmp/new.txt
+
+
+diff -B /tmp/old.txt /tmp/new.txt
+

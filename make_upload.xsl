@@ -95,8 +95,21 @@
     </xsl:template>
 
     <xsl:template match="xhtml:a[@class='reference internal']/xhtml:span[@class='doc']">
-        INTNERAL LINK TO <xsl:value-of select="."/>
+
+        <xsl:choose>
+            <xsl:when test="xhtml:span[@class='doc']">
+                    INTNERAL LINK TO <xsl:value-of select="xhtml:span"/>
+            </xsl:when>
+            <xsl:when test="xhtml:span[@class='xref std std-term']">
+                      GOLSSARY LINK TO <xsl:value-of select="xhtml:span"/>
+            </xsl:when>
+            <xsl:otherwise>
+                UNIDENTIFIED LINK TO <xsl:value-of select="xhtml:span"/>
+            </xsl:otherwise>
+        </xsl:choose>
+
     </xsl:template>
+
 
 
     <xsl:template match="xhtml:div[@class='admonition note']">
@@ -143,16 +156,16 @@
 
     <xsl:template match="xhtml:colgroup">
         <colgroup>
-           <xsl:apply-templates />
+            <xsl:apply-templates />
         </colgroup>
     </xsl:template>
 
     <xsl:template match="xhtml:col">
-    <xsl:element name="col">
+        <xsl:element name="col">
 
-       <xsl:attribute name="width">
-       <xsl:value-of select="@width" />
-       </xsl:attribute>
+            <xsl:attribute name="width">
+                <xsl:value-of select="@width" />
+            </xsl:attribute>
         </xsl:element>
     </xsl:template>
 
@@ -162,9 +175,9 @@
         </thead>
     </xsl:template>
     <xsl:template match="xhtml:th">
-        <td>
+        <th>
             <xsl:apply-templates/>
-        </td>
+        </th>
     </xsl:template>
 
 
@@ -177,19 +190,19 @@
 
 
     <xsl:template match="xhtml:td">
-    <xsl:choose>
-    <xsl:when test="@colspan">
-    <xsl:element name="td">
-    <xsl:attribute name="colspan" select="@colspan"/>
-    <xsl:apply-templates/>
-    </xsl:element>
-    </xsl:when>
-    <xsl:otherwise>
-        <td>
-            <xsl:apply-templates/>
-        </td>
-    </xsl:otherwise>
-    </xsl:choose>
+        <xsl:choose>
+            <xsl:when test="@colspan">
+                <xsl:element name="td">
+                    <xsl:attribute name="colspan" select="@colspan"/>
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:when>
+            <xsl:otherwise>
+                <td>
+                    <xsl:apply-templates/>
+                </td>
+            </xsl:otherwise>
+        </xsl:choose>
 
     </xsl:template>
 

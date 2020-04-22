@@ -55,6 +55,114 @@
             <xsl:when test="$filename='task-tool.png'">UUID-b9147357-1d4d-d677-d952-499037087b18</xsl:when>
             <xsl:when test="$filename='tool-list.png'">UUID-df480a52-48d6-ac38-59b7-51ebbaa3e9ed</xsl:when>
             <xsl:when test="$filename='waterfall-profile.png'">UUID-9197e4ba-0050-da6b-1bfd-adfe30e842e9</xsl:when>
+
+            <!-- 3.3 Tutorial images -->
+            <xsl:when test="$filename='dashboard.png'">UUID-a83998c5-8db0-e4ae-9ab7-9848af86dc88</xsl:when>
+            <xsl:when test="$filename='image-field.png'">UUID-ee679ecb-fa1b-644d-ac72-b4ba502a0bdb</xsl:when>
+            <xsl:when test="$filename='login.png'">UUID-55a7d081-e51c-754b-9794-fcd0ce6d1c96</xsl:when>
+            <xsl:when test="$filename='new-article.svg'">UUID-af2e3c54-0828-0d33-b112-9e473d9a66c8</xsl:when>
+            <xsl:when test="$filename='new-fields.png'">UUID-7169d4fe-f4cc-f4e1-f200-46442c38416e</xsl:when>
+            <xsl:when test="$filename='new-image-in-content-picker.png'">UUID-f19faa54-b062-241c-28ba-8a9c89219ff8</xsl:when>
+            <xsl:when test="$filename='new-image.png'">UUID-1af15e74-75a6-bd4c-4906-575dea6cd62e</xsl:when>
+            <xsl:when test="$filename='permalink.png'">UUID-8b4cafc4-1391-b783-929a-0d038de1a845</xsl:when>
+            <xsl:when test="$filename='populated-article.png'">UUID-5bbd27b8-2d00-5d9e-9847-659ec7ea2a9a</xsl:when>
+            <xsl:when test="$filename='preview-control-in-publish-widget.svg'">UUID-9ca0ad7f-6371-909d-be25-57c851948bcb</xsl:when>
+            <xsl:when test="$filename='preview-pane.png'">UUID-2d881b69-4f7d-0c26-831e-f0cc0083ac6a</xsl:when>
+            <xsl:when test="$filename='progression-diagram.svg'">UUID-5d0f13ed-194d-de92-9fad-1d9630869f29</xsl:when>
+            <xsl:when test="$filename='published.png'">UUID-6b21f5ce-75da-71fa-76d4-7a68e6f19017</xsl:when>
+            <xsl:when test="$filename='reloader.png'">UUID-85ecc7e2-eb18-3e1f-7d90-c4a82a0f0ece</xsl:when>
+            <xsl:when test="$filename='rte-editor.png'">UUID-e53e4b5d-64f8-6d00-ece2-ed3faef397cd</xsl:when>
+            <xsl:when test="$filename='styleguide-article-formatted.png'">UUID-c8a35770-a5de-f297-e67e-754a399a5aa3</xsl:when>
+            <xsl:when test="$filename='styleguide-article-published.png'">UUID-70718f55-ba2a-e392-d3d9-af8e90c29ee5</xsl:when>
+            <xsl:when test="$filename='styleguide-article.png'">UUID-0089c0f3-a1b1-86d3-24e7-d310a20b83ed</xsl:when>
+            <xsl:when test="$filename='styleguide-blank.png'">UUID-9354688c-5f08-6401-804a-e8059cfda5cd</xsl:when>
+            <xsl:when test="$filename='styleguide-default.png'">UUID-146d0674-52f2-9cfe-7247-02acb9ccdebe</xsl:when>
+            <xsl:when test="$filename='styleguide-directory.svg'">UUID-58db609b-0c10-d462-917e-ba2463c1d16f</xsl:when>
+            <xsl:when test="$filename='tutorial-directory.svg'">UUID-d1267538-477e-5da2-7cbe-650b23468440</xsl:when>
+
+            <!-- 3.3 Content Modeling Images -->
+            <xsl:when test="$filename='annotations-dev-tab.png'">UUID-6cb466f5-13c3-cd08-40a9-23ba8e335e84</xsl:when>
+            <xsl:when test="$filename='annotations-on-fields.svg'">UUID-eea6c5b3-2227-d7f8-b376-1a209d463ac9</xsl:when>
+            <xsl:when test="$filename='boolean-widget.png'">UUID-9b1cfc4b-3a3c-5ef4-9f33-5fbae1d243df</xsl:when>
+            <xsl:when test="$filename='bulk-upload-step1.png'">UUID-16d2abf9-5d10-d487-af2d-d5b827e54ca4</xsl:when>
+            <xsl:when test="$filename='bulk-upload-step2.png'">UUID-e7a59ded-6d48-5325-7bf2-9098430aacea</xsl:when>
+            <xsl:when test="$filename='cluster-display-order.svg'">UUID-2455c60d-33fe-0050-2bf0-0c31a61df4ac</xsl:when>
+            <xsl:when test="$filename='cluster.png'">UUID-a96ccc2e-99ea-7816-7143-75f01fa0b326</xsl:when>
+            <xsl:when test="$filename='code-type.png'">UUID-2ccfc3e8-2aea-7349-8f39-06040cc6acd6</xsl:when>
+            <xsl:when test="$filename='color-picker.png'">UUID-9f3ad912-38b1-cc9a-d3d2-d6e5baa920e7</xsl:when>
+            <xsl:when test="$filename='content-picker-from-global-filter.svg'">UUID-4e4320e7-7c21-bb0d-42ce-b7d113e2b7e6</xsl:when>
+            <xsl:when test="$filename='content-picker-query.png'">UUID-d56e9c83-02c9-d82d-3e51-911d0be7b6b7</xsl:when>
+            <xsl:when test="$filename='content-types-selection-fields.png'">UUID-86e0a91e-0e73-9c0e-f073-243295c67072</xsl:when>
+            <xsl:when test="$filename='css-class.png'">UUID-ae3ead0d-3a07-e94c-0d1d-a7628e407cc1</xsl:when>
+            <xsl:when test="$filename='date-widget.png'">UUID-ffff2959-c6d8-dcd6-c776-81f4150362d7</xsl:when>
+            <xsl:when test="$filename='default-search-result.svg'">UUID-d2787cb5-3968-8e54-0161-73bcf6dc84f5</xsl:when>
+            <xsl:when test="$filename='default-sort-field.svg'">UUID-4e859118-8585-1acd-116e-c29a5b01d5c4</xsl:when>
+            <xsl:when test="$filename='display-after.png'">UUID-60646332-75f8-0690-e038-6a4bda94955e</xsl:when>
+            <xsl:when test="$filename='display-before.png'">UUID-349e2af1-7f4b-34be-a566-b659309e4c41</xsl:when>
+            <xsl:when test="$filename='display-first.png'">UUID-ddfe7ca2-f06b-df29-ceee-8b14de436f2f</xsl:when>
+            <xsl:when test="$filename='display-global-filter.svg'">UUID-346f5a71-da1b-cf4a-1e6c-a4b0721aff9c</xsl:when>
+            <xsl:when test="$filename='display-grid.png'">UUID-8c7fb6f1-42b2-6aff-7e7f-4dc34c1c2166</xsl:when>
+            <xsl:when test="$filename='display-last.png'">UUID-c520abd4-c90d-c362-0e72-3b1b23571ca7</xsl:when>
+            <xsl:when test="$filename='drop-down.png'">UUID-0aada34e-0399-3c68-c3fc-441050918f2d</xsl:when>
+            <xsl:when test="$filename='edit-standard-image-size.png'">UUID-3d2504c3-0129-1772-def1-03f8e577b0a3</xsl:when>
+            <xsl:when test="$filename='enum-widget.png'">UUID-cf3a073e-c9aa-e182-0e89-f7db1e001e16</xsl:when>
+            <xsl:when test="$filename='expanded.png'">UUID-1a8592ac-e0fa-c146-7baa-a737ed1715b1</xsl:when>
+            <xsl:when test="$filename='field-display-order.png'">UUID-e5ce22bd-bc1c-5062-5846-de52e4b4aab0</xsl:when>
+            <xsl:when test="$filename='field-display-type.png'">UUID-0ef83181-e836-e674-58d5-c3784b9d9e6a</xsl:when>
+            <xsl:when test="$filename='field-label.png'">UUID-03bd064c-b0fe-bfb3-76a8-6b8dc2991c9d</xsl:when>
+            <xsl:when test="$filename='field-level-embed.png'">UUID-c7da80ff-d514-669a-8cea-9788847d8740</xsl:when>
+            <xsl:when test="$filename='field-sorted.png'">UUID-b5f97ffc-a3c1-573a-bff7-a0df18e69ef1</xsl:when>
+            <xsl:when test="$filename='file-properties-display-name.svg'">UUID-f82d17ff-48ff-dfb1-c44a-aad286991606</xsl:when>
+            <xsl:when test="$filename='filterable.svg'">UUID-2abf7f6e-9b0e-d98a-d848-2e52f231c127</xsl:when>
+            <xsl:when test="$filename='global-filter.svg'">UUID-49c0725c-107f-0c27-370e-7b6128e2331b</xsl:when>
+            <xsl:when test="$filename='item-color.png'">UUID-5c91c3ec-8de8-60d4-8dbe-ccc6bfbdabf4</xsl:when>
+            <xsl:when test="$filename='item-markers.png'">UUID-904d353d-6fcc-a493-ef92-42109ec1d69c</xsl:when>
+            <xsl:when test="$filename='item-toggle.png'">UUID-9d7f89bb-a92b-dc8e-1abf-24371522f453</xsl:when>
+            <xsl:when test="$filename='item-weight.png'">UUID-ab15a3a1-949f-5e87-ba2d-1c1c1ad5caf2</xsl:when>
+            <xsl:when test="$filename='layout-fields.svg'">UUID-a679d89d-76b1-753b-27f0-e6efa511bf5f</xsl:when>
+            <xsl:when test="$filename='layout-placeholders.svg'">UUID-f0190655-ab6e-1d79-8e24-59abaa7cc21c</xsl:when>
+            <xsl:when test="$filename='list-widget.png'">UUID-683d168c-b017-0070-d916-15699eb04eab</xsl:when>
+            <xsl:when test="$filename='main.png'">UUID-3b9ea6f5-2061-a06f-2d6f-f10b5f5dc88d</xsl:when>
+            <xsl:when test="$filename='markdown-widget.png'">UUID-997da60b-d5f1-b279-1bbe-145a3c95dde5</xsl:when>
+            <xsl:when test="$filename='modified-article.png'">UUID-013afcd1-b3b5-7ab8-d1cc-5e121a2937a2</xsl:when>
+            <xsl:when test="$filename='new-author.png'">UUID-a02b521d-26a5-3799-96bf-c2c44f6158d7</xsl:when>
+            <xsl:when test="$filename='new-query-ui.png'">UUID-0e7dc318-5b13-aba4-0e95-bf466369448a</xsl:when>
+            <xsl:when test="$filename='news-article.png'">UUID-8aa21775-d36e-c124-c37c-aa25ef97e241</xsl:when>
+            <xsl:when test="$filename='note-html.png'">UUID-77b6539a-8a72-5954-5609-c497447770b5</xsl:when>
+            <xsl:when test="$filename='note-renderer.png'">UUID-2653fa74-26b8-be01-4dd3-ea5776c2af40</xsl:when>
+            <xsl:when test="$filename='note.png'">UUID-738db08d-f8e1-ee2f-16b2-d999c9bc8fd0</xsl:when>
+            <xsl:when test="$filename='onlypathed.svg'">UUID-7200ca03-28c4-0f9d-ef08-1c24ae9d181e</xsl:when>
+            <xsl:when test="$filename='placeholder.png'">UUID-d66ecfd9-f9f0-8a7b-d918-0c34a51c9d3c</xsl:when>
+            <xsl:when test="$filename='progress.png'">UUID-460453b0-b3c4-25bd-8a7b-54e8a2d76021</xsl:when>
+            <xsl:when test="$filename='pub-btn-text.png'">UUID-e299c647-d43f-885a-4836-d5782155f7d6</xsl:when>
+            <xsl:when test="$filename='query-article.png'">UUID-f5aefa63-980f-b73a-ccca-8a90fff10e1e</xsl:when>
+            <xsl:when test="$filename='read-only-model.png'">UUID-2abaf45d-62a4-e34c-4dbd-ff0ff9e4ef5d</xsl:when>
+            <xsl:when test="$filename='read-only.png'">UUID-8fcba858-7cbb-f988-425d-b6140313c9a6</xsl:when>
+            <xsl:when test="$filename='rich-text-editor.svg'">UUID-bbca25ee-fded-9959-e0d6-26c707187877</xsl:when>
+            <xsl:when test="$filename='rich-text-element-block.svg'">UUID-f301ac1c-738c-3368-a786-1b822729f5c0</xsl:when>
+            <xsl:when test="$filename='rich-text-element-menu-items.svg'">UUID-84b5ad3a-9623-07a0-73f6-7f1f9b0eb171</xsl:when>
+            <xsl:when test="$filename='rich-text-element-tags.svg'">UUID-d94d71f8-49ac-b106-e807-cf33a24b5c4b</xsl:when>
+            <xsl:when test="$filename='rich-text-element-tool-tip.png'">UUID-ff176fba-4162-5e61-5bc1-c04ed27aa138</xsl:when>
+            <xsl:when test="$filename='rich-text-initial-body.png'">UUID-78c3c1c6-1931-9986-0063-33132ad7e15d</xsl:when>
+            <xsl:when test="$filename='rich-text.png'">UUID-64dba258-3b8f-b46f-320c-cbdea89465a4</xsl:when>
+            <xsl:when test="$filename='rte-annotation.png'">UUID-f3fa8235-204c-f57c-06eb-cb0a7463fd12</xsl:when>
+            <xsl:when test="$filename='save-widget.png'">UUID-a4c005ac-9fd5-44d6-4298-516e4a595660</xsl:when>
+            <xsl:when test="$filename='secret.png'">UUID-c96dcfe7-5827-a2dc-53e4-2f458f4cd84b</xsl:when>
+            <xsl:when test="$filename='seo-description.svg'">UUID-c671260a-61cd-8363-1c3d-4fde0c215a83</xsl:when>
+            <xsl:when test="$filename='seo-title.svg'">UUID-8659491b-6122-6ace-9b31-502ec8b8f94c</xsl:when>
+            <xsl:when test="$filename='sortable.svg'">UUID-0c8170d1-d605-64e3-16c2-2f045c0f36fd</xsl:when>
+            <xsl:when test="$filename='storage-widget.png'">UUID-723946bc-976c-4b00-ee39-c1a33744c269</xsl:when>
+            <xsl:when test="$filename='subheadline-.png'">UUID-4fc8a01f-e705-0a9b-8811-58bbb1445d8b</xsl:when>
+            <xsl:when test="$filename='subheadline-visible.png'">UUID-797bffa2-df81-9a5c-607d-a53ad8eca0c6</xsl:when>
+            <xsl:when test="$filename='suggested-max.png'">UUID-164ede01-ec89-7d11-ab46-ca008f3b3fcf</xsl:when>
+            <xsl:when test="$filename='suggested-min.png'">UUID-332bf00e-f05b-4416-bc50-85ffe6eb64ff</xsl:when>
+            <xsl:when test="$filename='suggestions-annotation-2.svg'">UUID-6c15c1c9-f6c5-16b3-6b37-bb2f83e43de4</xsl:when>
+            <xsl:when test="$filename='tab-display-order.svg'">UUID-5e98cddb-b430-31b8-0ff8-ab5307c7a0e4</xsl:when>
+            <xsl:when test="$filename='tab-label.png'">UUID-a4e1c213-732a-f5e5-1c58-95adeecbb491</xsl:when>
+            <xsl:when test="$filename='unlabeled.png'">UUID-793b5fcf-9580-65a3-c3c5-d3ec23f87b7f</xsl:when>
+            <xsl:when test="$filename='wrench.svg'">UUID-3eac8db5-e037-e24a-187c-71371e22a202</xsl:when>
+
+
             <xsl:otherwise>
                 <xsl:message>WARNING: No UUID found for image file <xsl:value-of select="$filename"/>
                 </xsl:message>
