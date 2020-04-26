@@ -2,8 +2,10 @@
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:xhtml="http://www.w3.org/1999/xhtml" 
     xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xmlns:omg="http://www.lautman.net" 
     xmlns:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0" 
-    xmlns:e="http://ns.expertinfo.se/cms/xmlns/export/1.0" version="2.0" exclude-result-prefixes="xhtml xinfo xlink e">
+    xmlns:e="http://ns.expertinfo.se/cms/xmlns/export/1.0" version="2.0" exclude-result-prefixes="xhtml xinfo xlink e omg">
+    <xsl:include href="glossary_variables.xsl"/>
     <xsl:output indent="yes" method="xml"/>
 
 
@@ -21,13 +23,35 @@
     <xsl:template match="xhtml:a">
         <!-- <xsl:message>
             <xsl:value-of select="."/>
-        </xsl:message> --> 
+        </xsl:message> -->
         <xsl:choose>
             <!-- Process a link to a glossary term -->
             <xsl:when test="@class='reference internal' and xhtml:span[@class='xref std std-term']">
-                <glossterm>
-                    <xsl:value-of select="xhtml:span" />
-                </glossterm>
+
+                <xsl:variable name="baseform">
+                    <xsl:value-of select="omg:get_baseform(@href)"/>
+                </xsl:variable>
+                <xsl:choose>
+                    <xsl:when test="$baseform='WARNING'">
+                        <glossterm xmlns="http://docbook.org/ns/docbook">
+                    NEED GLOSSARY TERM FOR <xsl:value-of select="."/>
+                        </glossterm>
+                    </xsl:when>
+                    <xsl:when test="$baseform = .">
+                        <glossterm xmlns="http://docbook.org/ns/docbook">
+                            <xsl:value-of select="." />
+                        </glossterm>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:element name="glossterm" namespace="http://docbook.org/ns/docbook">
+                            <xsl:attribute name="baseform">
+                                <xsl:value-of select="$baseform"/>
+                            </xsl:attribute>
+                            <xsl:value-of select="." />
+                        </xsl:element>
+                    </xsl:otherwise>
+                </xsl:choose>
+
             </xsl:when>
             <!-- Process a link to an internal target -->
             <xsl:when test="@class='reference internal' and xhtml:span[@class='std std-ref']">
@@ -38,7 +62,7 @@
                 <xsl:variable name="resource_id" select="$resources/@id" />
                  <xsl:message>resources_id <xsl:value-of select="$resource_id"/></xsl:message> -->
                 <xsl:variable name="resource_id" select="document('resource-9821.xml')//e:folder/e:component[@title=$target_title]/@id" />
-                 <!-- <xsl:message>resource_id <xsl:value-of select="$resource_id"/></xsl:message> -->
+                <!-- <xsl:message>resource_id <xsl:value-of select="$resource_id"/></xsl:message> -->
                 <xsl:element name="xref" namespace="xmlns:xlink">
                     <xsl:attribute name="xlink:href">
                         <xsl:value-of select="concat('urn:resource:component:',$resource_id)" />
@@ -86,6 +110,7 @@
         </emphasis>
 
     </xsl:template>
+
 
 
 </xsl:transform>
