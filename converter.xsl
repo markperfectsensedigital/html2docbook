@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:xhtml="http://www.w3.org/1999/xhtml" 
-    xmlns:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0" version="2.0" exclude-result-prefixes="xhtml xinfo"
-    xpath-default-namespace="http://www.w3.org/1999/xhtml">
+    xmlns:xinfo="http://ns.expertinfo.se/cms/xmlns/1.0" version="2.0" exclude-result-prefixes="xhtml xinfo" xpath-default-namespace="http://www.w3.org/1999/xhtml">
 
     <xsl:include href="tables.xsl"/>
     <xsl:include href="images.xsl"/>
@@ -77,16 +76,35 @@
             <xsl:when test="(starts-with(./child::xhtml:strong[1],'To ')) or 
             (@class = 'first admonition-title')">
             </xsl:when>
-            <xsl:otherwise>
+
+            <xsl:when test="text()='The following table lists the elements available with this annotation.'">
                 <para xmlns="http://docbook.org/ns/docbook">
-                    <xsl:apply-templates />
+                    <xsl:element name="phrase" namespace="http://docbook.org/ns/docbook">
+                        <xsl:attribute name="xinfo:variable">31</xsl:attribute>
+                        <xsl:attribute name="xinfo:varset">446</xsl:attribute>
+                    </xsl:element>
                 </para>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
+                </xsl:when>
+
+            <xsl:when test="text()='The following snippet includes an example of implementing this annotation.'">
+                <para xmlns="http://docbook.org/ns/docbook">
+                    <xsl:element name="phrase" namespace="http://docbook.org/ns/docbook">
+                        <xsl:attribute name="xinfo:variable">32</xsl:attribute>
+                        <xsl:attribute name="xinfo:varset">446</xsl:attribute>
+                    </xsl:element>
+                </para>
+                </xsl:when>
+
+                <xsl:otherwise>
+                    <para xmlns="http://docbook.org/ns/docbook">
+                        <xsl:apply-templates />
+                    </para>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:template>
 
 
-    <!-- Different templates for different <strong> contexts.
+        <!-- Different templates for different <strong> contexts.
     If the <strong> starts with 'To ' (as in 'To create an article'), then
     we assume that this <strong> starts a procedure. That scenario is processed 
     in a different template.
@@ -97,28 +115,28 @@
 
     Otherwise, output the node in an <emphasis> tag.
 -->
-    <xsl:template match="xhtml:strong[not(starts-with(.,'To '))]">
-        <xsl:choose>
-            <xsl:when test="./text() = 'See also:'">
-                <itemizedlist xmlns="http://docbook.org/ns/docbook">
-                    <title>
-                        <xsl:element name="phrase">
-                            <xsl:attribute name="varset" namespace="xinfo">446</xsl:attribute>
-                            <xsl:attribute name="variable" namespace="xinfo">6</xsl:attribute>
-                        </xsl:element>
-                    </title>
-                </itemizedlist>
-            </xsl:when>
-            <xsl:otherwise>
-                <emphasis xmlns="http://docbook.org/ns/docbook" role="bold">
-                    <xsl:apply-templates />
-                </emphasis>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
+        <xsl:template match="xhtml:strong[not(starts-with(.,'To '))]">
+            <xsl:choose>
+                <xsl:when test="./text() = 'See also:'">
+                    <itemizedlist xmlns="http://docbook.org/ns/docbook">
+                        <title>
+                            <xsl:element name="phrase">
+                                <xsl:attribute name="varset" namespace="xinfo">446</xsl:attribute>
+                                <xsl:attribute name="variable" namespace="xinfo">6</xsl:attribute>
+                            </xsl:element>
+                        </title>
+                    </itemizedlist>
+                </xsl:when>
+                <xsl:otherwise>
+                    <emphasis xmlns="http://docbook.org/ns/docbook" role="bold">
+                        <xsl:apply-templates />
+                    </emphasis>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:template>
 
 
-    <!-- <xsl:template match="xhtml:div[@class='line-block']">
+        <!-- <xsl:template match="xhtml:div[@class='line-block']">
         <xsl:apply-templates />
     </xsl:template>
 
@@ -129,9 +147,9 @@
     </xsl:template> -->
 
 
-    <!-- <xsl:template match="xhtml:dl/xhtml:dd">
+        <!-- <xsl:template match="xhtml:dl/xhtml:dd">
     </xsl:template> -->
 
-    <!--Suppress generic template -->
-    <!-- <xsl:template match="text()"/> -->
-</xsl:transform>
+        <!--Suppress generic template -->
+        <!-- <xsl:template match="text()"/> -->
+    </xsl:transform>

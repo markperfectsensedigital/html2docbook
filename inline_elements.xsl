@@ -19,18 +19,34 @@
     </xsl:template>
 
     <xsl:template match="xhtml:a">
-        <xsl:message>
+        <!-- <xsl:message>
             <xsl:value-of select="."/>
-        </xsl:message>
+        </xsl:message> --> 
         <xsl:choose>
             <!-- Process a link to a glossary term -->
-            <xsl:when test="@class='reference internal'/xhtml:span[class='xref std std-term']">
+            <xsl:when test="@class='reference internal' and xhtml:span[@class='xref std std-term']">
                 <glossterm>
                     <xsl:value-of select="xhtml:span" />
                 </glossterm>
             </xsl:when>
             <!-- Process a link to an internal target -->
-            <xsl:when test="@class='reference internal'">
+            <xsl:when test="@class='reference internal' and xhtml:span[@class='std std-ref']">
+                <xsl:variable name="target_title" select="xhtml:span"/>
+                <!-- <xsl:message>target_title: <xsl:value-of select="$target_title"/></xsl:message> -->
+                <!-- <xsl:variable name="resources" select="document('resource-1.xml')//e:resource/e:component[@title=$target_title]" />
+                <xsl:message>resources: <xsl:value-of select="$resources"/></xsl:message>
+                <xsl:variable name="resource_id" select="$resources/@id" />
+                 <xsl:message>resources_id <xsl:value-of select="$resource_id"/></xsl:message> -->
+                <xsl:variable name="resource_id" select="document('resource-9821.xml')//e:folder/e:component[@title=$target_title]/@id" />
+                 <!-- <xsl:message>resource_id <xsl:value-of select="$resource_id"/></xsl:message> -->
+                <xsl:element name="xref" namespace="xmlns:xlink">
+                    <xsl:attribute name="xlink:href">
+                        <xsl:value-of select="concat('urn:resource:component:',$resource_id)" />
+                    </xsl:attribute>
+                </xsl:element>
+            </xsl:when>
+            <!-- Process a link to an internal target -->
+            <!-- <xsl:when test="@class='reference internal'">
                 <xsl:variable name="target_title" select="xhtml:span | ."/>
                 <xsl:message>Target title <xsl:value-of select="$target_title"/>
                 </xsl:message>
@@ -44,7 +60,7 @@
                         <xsl:value-of select="concat('urn:resource:component:',$resource_id)" />
                     </xsl:attribute>
                 </xsl:element>
-            </xsl:when>
+            </xsl:when> -->
             <!-- Toss shareable links to interhal headers (the ones with the paragraph symbol) -->
             <xsl:when test="@class='headerlink'">
             </xsl:when>

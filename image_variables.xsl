@@ -162,7 +162,21 @@
             <xsl:when test="$filename='unlabeled.png'">UUID-793b5fcf-9580-65a3-c3c5-d3ec23f87b7f</xsl:when>
             <xsl:when test="$filename='wrench.svg'">UUID-3eac8db5-e037-e24a-187c-71371e22a202</xsl:when>
 
+            <!-- 3.3 Developer Widgets -->
 
+            <xsl:when test="$filename='custom-dashboard-widget-displayed.png'">UUID-fb2cf833-1648-a1df-a38b-f210b0df1554</xsl:when>
+            <xsl:when test="$filename='custom-dashboard-widget.svg'">UUID-6c3c53e2-d6ca-2cbd-4823-a9446ae20beb</xsl:when>
+            <xsl:when test="$filename='custom-profile-tab.png'">UUID-b6f713e2-32bf-ae20-e888-a803e46d2c61</xsl:when>
+            <xsl:when test="$filename='custom-tab.png'">UUID-358b0610-ebf4-55ab-53cc-ecf09cdc0ce2</xsl:when>
+            <xsl:when test="$filename='custom-widget-content-edit-form.png'">UUID-479f52c2-5872-4db1-fee6-e3d937894a47</xsl:when>
+            <xsl:when test="$filename='custom-widget-.png'">UUID-1bd0813a-f768-5a53-8f0d-c37a9967cd02</xsl:when>
+            <xsl:when test="$filename='custom-widget-position-substitution.png'">UUID-a3812010-23d3-41fe-4ebc-d1e4e26a02f8</xsl:when>
+            <xsl:when test="$filename='custom-widget-position.png'">UUID-49722ecc-2a41-d326-9cf3-ae874ced1589</xsl:when>
+            <xsl:when test="$filename='custom-widget-shown.png'">UUID-d146e47d-a8d6-0706-4959-4f137f534554</xsl:when>
+            <xsl:when test="$filename='default-profile-tabs.svg'">UUID-252a8450-3f8c-0b4b-15e5-c8eb01399732</xsl:when>
+            <xsl:when test="$filename='default-widget-position.svg'">UUID-17953a40-d500-6992-f0bc-c85c116aa9cb</xsl:when>
+            <xsl:when test="$filename='no-urls-widget-content-edit-page.png'">UUID-d62cdb2b-9b82-b2ee-0950-3d71d6002bfe</xsl:when>
+            <xsl:when test="$filename='updating-content-edit-widget.png'">UUID-0c0412e8-ac16-f73f-20a5-7088e75f9150</xsl:when>
             <xsl:otherwise>
                 <xsl:message>WARNING: No UUID found for image file <xsl:value-of select="$filename"/>
                 </xsl:message>
