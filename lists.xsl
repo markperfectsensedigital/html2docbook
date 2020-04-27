@@ -7,8 +7,9 @@
 
     <xsl:template match="xhtml:ol">
         <!-- If an <ol> has a previous sibling that starts with 'To ', then assume this <ol> starts a procedure. -->
+        <xsl:message>Preceding: <xsl:value-of select="./preceding-sibling::xhtml:p[1]/xhtml:strong"/></xsl:message>
         <xsl:choose>
-            <xsl:when test="starts-with(./preceding-sibling::xhtml:p[1]/xhtml:strong,'To ')">
+            <xsl:when test="starts-with(./preceding-sibling::xhtml:p[1]/xhtml:strong[1],'To ')">
                 <procedure xmlns="http://docbook.org/ns/docbook">
                     <title>
                         <xsl:value-of select="./preceding-sibling::xhtml:p[1]/xhtml:strong"/>
@@ -38,7 +39,17 @@
     <xsl:template match="xhtml:ul[preceding-sibling::xhtml:p[1]/xhtml:strong]">
         <itemizedlist xmlns="http://docbook.org/ns/docbook">
             <title>
-                <xsl:value-of select="./preceding-sibling::xhtml:p[1]/xhtml:strong"/>
+                <xsl:choose>
+                    <xsl:when test="preceding-sibling::xhtml:p[1]/xhtml:strong/text() = 'See also:'">
+                        <xsl:element name="phrase">
+                            <xsl:attribute name="varset" namespace="xinfo">446</xsl:attribute>
+                            <xsl:attribute name="variable" namespace="xinfo">6</xsl:attribute>
+                        </xsl:element>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="./preceding-sibling::xhtml:p[1]/xhtml:strong"/>
+                    </xsl:otherwise>
+                </xsl:choose>
             </title>
             <xsl:apply-templates />
         </itemizedlist>
@@ -51,7 +62,7 @@
     </xsl:template>
 
     <xsl:template match="xhtml:ol/xhtml:li/xhtml:ul">
-        <xsl:message>Entering itemized list</xsl:message>
+        <!-- <xsl:message>Entering itemized list</xsl:message> -->
         <stepalternatives xmlns="http://docbook.org/ns/docbook">
             <xsl:apply-templates />
         </stepalternatives>
@@ -61,12 +72,12 @@
         <!-- If an <li> is the child of an <ol> whose previous sibling <p>
     starts with 'To ', then assume this <li> is a <step> in a <procedure>. -->
         <xsl:choose>
-            <xsl:when test="starts-with(../preceding-sibling::xhtml:p[1]/xhtml:strong,'To ')">
+            <xsl:when test="starts-with(../preceding-sibling::xhtml:p[1]/xhtml:strong[1],'To ')">
                 <!-- <xsl:message>Entering li</xsl:message> -->
                 <step xmlns="http://docbook.org/ns/docbook">
-                    <para>
+          
                         <xsl:apply-templates/>
-                    </para>
+             
                 </step>
             </xsl:when>
             <!-- substeps in a procedure -->
@@ -86,8 +97,8 @@
                 </listitem>
             </xsl:when>
             <xsl:otherwise>
-            <listitem xmlns="http://docbook.org/ns/docbook">
-                <xsl:apply-templates/>
+                <listitem xmlns="http://docbook.org/ns/docbook">
+                    <xsl:apply-templates/>
                 </listitem>
             </xsl:otherwise>
         </xsl:choose>

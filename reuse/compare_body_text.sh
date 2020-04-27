@@ -19,17 +19,23 @@ if [[ $# -lt 2 ]]; then
     exit
 fi
 
-if [[ ! -f $1 ]]; then
-    echo "$1 does not exist. Try again."
+OLD_ORIGINAL_HTML=$1
+OLD_ORIGINAL_HTML=$(echo "$OLD_ORIGINAL_HTML" | sed "s/file:\/\///")
+
+NEW_ORIGINAL_HTML=$2
+NEW_ORIGINAL_HTML=$(echo "$NEW_ORIGINAL_HTML" | sed "s/file:\/\///")
+
+if [[ ! -f $OLD_ORIGINAL_HTML ]]; then
+    echo "$OLD_ORIGINAL_HTML does not exist. Try again."
     exit
 fi
 
-if [[ ! -f $2 ]]; then
-    echo "$2 does not exist. Try again."
+if [[ ! -f $NEW_ORIGINAL_HTML ]]; then
+    echo "$NEW_ORIGINAL_HTML does not exist. Try again."
     exit
 fi
 
-../cleanit.py "$1"
+../cleanit.py "$OLD_ORIGINAL_HTML"
 if [ $? -ne 0 ]; then
     echo "Could not clean file. Try again."
     exit
@@ -37,7 +43,7 @@ fi
 
 cp cleanfile.html /tmp/old.html
 
-../cleanit.py "$2"
+../cleanit.py "$NEW_ORIGINAL_HTML"
 if [ $? -ne 0 ]; then
     echo "Could not clean file. Try again."
     exit

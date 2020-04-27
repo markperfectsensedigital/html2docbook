@@ -177,6 +177,53 @@
             <xsl:when test="$filename='default-widget-position.svg'">UUID-17953a40-d500-6992-f0bc-c85c116aa9cb</xsl:when>
             <xsl:when test="$filename='no-urls-widget-content-edit-page.png'">UUID-d62cdb2b-9b82-b2ee-0950-3d71d6002bfe</xsl:when>
             <xsl:when test="$filename='updating-content-edit-widget.png'">UUID-0c0412e8-ac16-f73f-20a5-7088e75f9150</xsl:when>
+
+            <!-- 3.3 Developer Search -->
+
+            <xsl:when test="$filename='actions1.png'">UUID-7f4f4c1e-8683-f556-e108-6bdf513cc1d0</xsl:when>
+            <xsl:when test="$filename='actions2.png'">UUID-b3a38db6-93f5-a7be-73ef-757ae9fab0ce</xsl:when>
+            <xsl:when test="$filename='article.png'">UUID-d0cadac3-f7a9-945c-846f-b98e7e1dcbc6</xsl:when>
+            <xsl:when test="$filename='carousel.png'">UUID-650e7a35-09a0-c77e-b098-a8711bcb1e34</xsl:when>
+            <xsl:when test="$filename='content-picker1.png'">UUID-0793d0db-c258-1803-4648-4d5609bd08ae</xsl:when>
+            <xsl:when test="$filename='content-picker2.png'">UUID-e44b5a5f-ec31-6163-48b8-515ba251b691</xsl:when>
+            <xsl:when test="$filename='customized-search-panel.svg'">UUID-7d6ccc60-8d5d-cbcd-9f3b-78038fd4a59a</xsl:when>
+            <xsl:when test="$filename='results1.png'">UUID-3e8cecb9-5ce0-8a05-fd03-2e1d6a3c6e49</xsl:when>
+            <xsl:when test="$filename='results2.png'">UUID-b35a711f-105c-c5f7-9a19-e347e0b705ab</xsl:when>
+            <xsl:when test="$filename='select-fields1.png'">UUID-d72776fd-fd1c-2e71-5916-8ab641cf996a</xsl:when>
+            <xsl:when test="$filename='select-fields2.png'">UUID-463de128-9457-5a0e-a358-580289949e9c</xsl:when>
+            <xsl:when test="$filename='standard-filter.png'">UUID-19ebf4c7-26d8-90c3-14c0-8c1da58c5a42</xsl:when>
+            <xsl:when test="$filename='suggestions.png'">UUID-b2eda4b0-2f5f-0b65-7789-814bc946a496</xsl:when>
+
+            <!-- 3.3 Editor dashboard -->
+            <xsl:when test="$filename='bulk-upload-widget.png'">UUID-d05d0b85-6d8b-690f-525c-2052e223c603</xsl:when>
+            <xsl:when test="$filename='db-cms.png'">UUID-920de8c0-a283-1a89-8ff2-f126b8d1aaab</xsl:when>
+            <xsl:when test="$filename='db-global.png'">UUID-8d5e94f3-82f9-e943-f3f8-f97b1f9548ce</xsl:when>
+            <xsl:when test="$filename='db-role.png'">UUID-4d073908-8f26-679f-9e7e-6583a614c7d9</xsl:when>
+            <xsl:when test="$filename='db-site.png'">UUID-194530e1-a1e6-2012-0fde-6c43537af151</xsl:when>
+            <xsl:when test="$filename='db-user.png'">UUID-e750b217-fe95-066c-bfe1-c3c81d11ee71</xsl:when>
+            <xsl:when test="$filename='dbpane1.png'">UUID-6c663e24-f6a2-50d0-e679-de56e355ee80</xsl:when>
+            <xsl:when test="$filename='dbpane2.png'">UUID-f2787bf5-50a2-afb1-fa7b-b618b9e63cd2</xsl:when>
+            <xsl:when test="$filename='dbselect.png'">UUID-bc59828d-ab64-2a9d-2c9d-c16087cf99cf</xsl:when>
+            <xsl:when test="$filename='editpage1.png'">UUID-e09d5169-1004-b592-2098-aabc4efcedbc</xsl:when>
+            <xsl:when test="$filename='editpage2.png'">UUID-7ef6c8ce-8129-fbbc-a68b-bb2ba18b956c</xsl:when>
+            <xsl:when test="$filename='new-schedule.png'">UUID-53044a53-d7f8-7b60-0369-b0aa0d8cb9bb</xsl:when>
+            <xsl:when test="$filename='oneoff.png'">UUID-bf7c59f8-62f2-4967-3663-7fe9e5200edd</xsl:when>
+            <xsl:when test="$filename='quick-start-content-types.png'">UUID-046101f1-8503-f9c8-153a-32da5f83e9fe</xsl:when>
+            <xsl:when test="$filename='quick-start-edit-existing.png'">UUID-0ba943d9-3dff-716b-4a04-9e841bc5fa12</xsl:when>
+            <xsl:when test="$filename='quick-start.png'">UUID-26322527-14cb-8a14-d5fb-8beb6c4cdb13</xsl:when>
+            <xsl:when test="$filename='recent-activity.jpg'">UUID-34d71e7e-9a9f-cd24-85c6-129da7c084d8</xsl:when>
+            <xsl:when test="$filename='resources-widget-resource-file.png'">UUID-a2198b7d-a642-53f0-0a56-5674f0de2b78</xsl:when>
+            <xsl:when test="$filename='resources-widget-resource-link.png'">UUID-aeaa6a80-2348-326a-8b86-70e66bcaefbb</xsl:when>
+            <xsl:when test="$filename='resources-widget.png'">UUID-e1625321-94df-6d9b-142c-06818ccd9d7c</xsl:when>
+            <xsl:when test="$filename='revisions.png'">UUID-573cd2b2-3ac8-155d-698f-2a657c857ec2</xsl:when>
+            <xsl:when test="$filename='save.png'">UUID-848414ed-8535-c78a-d249-0057b561026b</xsl:when>
+            <xsl:when test="$filename='sched-events.jpg'">UUID-cbcb3439-a606-2b06-53f1-631c73db2e40</xsl:when>
+            <xsl:when test="$filename='selections.jpg'">UUID-e9147190-7505-31f9-34f8-8e5843ce0b19</xsl:when>
+            <xsl:when test="$filename='tabs.png'">UUID-d4100389-cf96-f061-c094-19cda7f74cfc</xsl:when>
+            <xsl:when test="$filename='unpub-drafts.jpg'">UUID-2f69a4f9-7989-2c56-96db-a585d3594fc1</xsl:when>
+            <xsl:when test="$filename='upload-files.png'">UUID-e11783a4-77e0-29f5-e602-b5a744233e9b</xsl:when>
+            <xsl:when test="$filename='work-streams.png'">UUID-4bc56b7d-f53b-4633-4a25-0461111bcce1</xsl:when>
+
             <xsl:otherwise>
                 <xsl:message>WARNING: No UUID found for image file <xsl:value-of select="$filename"/>
                 </xsl:message>

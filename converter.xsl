@@ -74,7 +74,8 @@
     <xsl:template match="xhtml:p">
         <xsl:choose>
             <xsl:when test="(starts-with(./child::xhtml:strong[1],'To ')) or 
-            (@class = 'first admonition-title')">
+            (@class = 'first admonition-title') or 
+            (starts-with(./child::xhtml:strong[1],'See also'))">
             </xsl:when>
 
             <xsl:when test="text()='The following table lists the elements available with this annotation.'">
@@ -84,7 +85,7 @@
                         <xsl:attribute name="xinfo:varset">446</xsl:attribute>
                     </xsl:element>
                 </para>
-                </xsl:when>
+            </xsl:when>
 
             <xsl:when test="text()='The following snippet includes an example of implementing this annotation.'">
                 <para xmlns="http://docbook.org/ns/docbook">
@@ -93,18 +94,18 @@
                         <xsl:attribute name="xinfo:varset">446</xsl:attribute>
                     </xsl:element>
                 </para>
-                </xsl:when>
+            </xsl:when>
 
-                <xsl:otherwise>
-                    <para xmlns="http://docbook.org/ns/docbook">
-                        <xsl:apply-templates />
-                    </para>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:template>
+            <xsl:otherwise>
+                <para xmlns="http://docbook.org/ns/docbook">
+                    <xsl:apply-templates />
+                </para>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
 
 
-        <!-- Different templates for different <strong> contexts.
+    <!-- Different templates for different <strong> contexts.
     If the <strong> starts with 'To ' (as in 'To create an article'), then
     we assume that this <strong> starts a procedure. That scenario is processed 
     in a different template.
@@ -115,28 +116,15 @@
 
     Otherwise, output the node in an <emphasis> tag.
 -->
-        <xsl:template match="xhtml:strong[not(starts-with(.,'To '))]">
-            <xsl:choose>
-                <xsl:when test="./text() = 'See also:'">
-                    <itemizedlist xmlns="http://docbook.org/ns/docbook">
-                        <title>
-                            <xsl:element name="phrase">
-                                <xsl:attribute name="varset" namespace="xinfo">446</xsl:attribute>
-                                <xsl:attribute name="variable" namespace="xinfo">6</xsl:attribute>
-                            </xsl:element>
-                        </title>
-                    </itemizedlist>
-                </xsl:when>
-                <xsl:otherwise>
-                    <emphasis xmlns="http://docbook.org/ns/docbook" role="bold">
-                        <xsl:apply-templates />
-                    </emphasis>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:template>
+    <xsl:template match="xhtml:strong[not(starts-with(.,'To ')) and not(starts-with(.,'See also'))]">
+        <emphasis xmlns="http://docbook.org/ns/docbook" role="bold">
+            <xsl:apply-templates />
+        </emphasis>
+
+    </xsl:template>
 
 
-        <!-- <xsl:template match="xhtml:div[@class='line-block']">
+    <!-- <xsl:template match="xhtml:div[@class='line-block']">
         <xsl:apply-templates />
     </xsl:template>
 
@@ -147,9 +135,9 @@
     </xsl:template> -->
 
 
-        <!-- <xsl:template match="xhtml:dl/xhtml:dd">
+    <!-- <xsl:template match="xhtml:dl/xhtml:dd">
     </xsl:template> -->
 
-        <!--Suppress generic template -->
-        <!-- <xsl:template match="text()"/> -->
-    </xsl:transform>
+    <!--Suppress generic template -->
+    <!-- <xsl:template match="text()"/> -->
+</xsl:transform>
