@@ -40,4 +40,9 @@ for i in "${heading[@]}"; do
   OUTPUTFILE="docbooks/$i.xml"
   echo "Processing heading $i into $OUTPUTFILE"
   saxon -s:/Users/mlautman/Documents/paligo/converter/cleanfile.html -xsl:/Users/mlautman/Documents/paligo/converter/converter.xsl -o:"$OUTPUTFILE" startingheading="$i" 
+
+  if [ $? -ne 0 ]; then
+    echo "Saxon transform failed, exiting."
+    exit
+  fi
 done

@@ -8,23 +8,17 @@
     <xsl:template match="xhtml:ol">
         <!-- If an <ol> has a previous sibling that starts with 'To ', then assume this <ol> starts a procedure. -->
         <!-- <xsl:message>Preceding: <xsl:value-of select="./preceding-sibling::xhtml:p[1]/xhtml:strong"/></xsl:message> -->
-        <xsl:choose>
-            <xsl:when test="starts-with(./preceding-sibling::xhtml:p[1]/xhtml:strong[1],'To ')">
-                <procedure xmlns="http://docbook.org/ns/docbook">
-                    <title>
-                        <xsl:value-of select="./preceding-sibling::xhtml:p[1]/xhtml:strong"/>
-                    </title>
-                    <xsl:apply-templates />
-                </procedure>
-            </xsl:when>
-            <!-- All other <ol> starts an ordered list. -->
-            <xsl:otherwise>
-                <orderedlist xmlns="http://docbook.org/ns/docbook">
-                    <xsl:apply-templates />
-                </orderedlist>
-            </xsl:otherwise>
-        </xsl:choose>
+
+        <procedure xmlns="http://docbook.org/ns/docbook">
+            <xsl:if test="starts-with(./preceding-sibling::xhtml:p[1]/xhtml:strong[1],'To ')">
+                <title>
+                    <xsl:value-of select="./preceding-sibling::xhtml:p[1]/xhtml:strong"/>
+                </title>
+            </xsl:if>
+            <xsl:apply-templates />
+        </procedure>
     </xsl:template>
+
 
     <!-- Assume an <ol> that is a child of <ol><li> is a list of substeps -->
     <xsl:template match="xhtml:ol/xhtml:li/xhtml:ol">
@@ -35,10 +29,10 @@
         <!-- <xsl:message>Exiting OL</xsl:message> -->
     </xsl:template>
 
-
+    <!-- See also list -->
     <xsl:template match="xhtml:ul[preceding-sibling::xhtml:p[1]/xhtml:strong]">
         <itemizedlist xmlns="http://docbook.org/ns/docbook">
-            <title>
+            <title xmlns="http://docbook.org/ns/docbook">
                 <xsl:choose>
                     <xsl:when test="preceding-sibling::xhtml:p[1]/xhtml:strong/text() = 'See also:'">
                         <xsl:element name="phrase">
@@ -54,7 +48,9 @@
             <xsl:apply-templates />
         </itemizedlist>
     </xsl:template>
-    <xsl:template match="xhtml:ul | xhtml:div[@class='line-block']">
+
+
+    <xsl:template match="xhtml:ul">
         <!-- <xsl:message>Entering itemized list</xsl:message> -->
         <itemizedlist xmlns="http://docbook.org/ns/docbook">
             <xsl:apply-templates />
@@ -68,42 +64,23 @@
         </stepalternatives>
     </xsl:template>
 
-    <xsl:template match="xhtml:ol/xhtml:li | xhtml:div[@class='line-block']/xhtml:div[@class='line']">
-        <!-- If an <li> is the child of an <ol> whose previous sibling <p>
-    starts with 'To ', then assume this <li> is a <step> in a <procedure>. -->
-        <xsl:choose>
-            <xsl:when test="starts-with(../preceding-sibling::xhtml:p[1]/xhtml:strong[1],'To ')">
-                <!-- <xsl:message>Entering li</xsl:message> -->
-                <step xmlns="http://docbook.org/ns/docbook">
-          
-                        <xsl:apply-templates/>
-             
-                </step>
-            </xsl:when>
-            <!-- substeps in a procedure -->
-            <xsl:when test="parent::xhtml:ol/parent::xhtml:li/parent::xhtml:ol">
-                <!-- <xsl:message>Entering li</xsl:message> -->
-                <step xmlns="http://docbook.org/ns/docbook">
-                    <xsl:apply-templates/>
-                </step>
-            </xsl:when>
+    <xsl:template match="xhtml:ol/xhtml:li[string-length(text()[1]) = 1]">
+        <!-- <xsl:message>This li has YES text and its value is  <xsl:value-of select="string-length(text()[1])"/>
+        </xsl:message> -->
 
-            <!-- In other cases, assume this <li> is a <listitem> in an ordered list. -->
-            <xsl:when test="not(child::xhtml:p)">
-                <listitem xmlns="http://docbook.org/ns/docbook">
-                    <para xmlns="http://docbook.org/ns/docbook">
-                        <xsl:apply-templates />
-                    </para>
-                </listitem>
-            </xsl:when>
-            <xsl:otherwise>
-                <listitem xmlns="http://docbook.org/ns/docbook">
-                    <xsl:apply-templates/>
-                </listitem>
-            </xsl:otherwise>
-        </xsl:choose>
+        <step xmlns="http://docbook.org/ns/docbook">
+            <xsl:apply-templates/>
+        </step>
+    </xsl:template>
 
-
+    <xsl:template match="xhtml:ol/xhtml:li[string-length(text()[1]) > 1]">
+        <!-- <xsl:message>This li has NO text and its value is <xsl:value-of select="string-length(text()[1])"/>
+        </xsl:message> -->
+        <step xmlns="http://docbook.org/ns/docbook">
+            <para>
+                <xsl:apply-templates/>
+            </para>
+        </step>
     </xsl:template>
 
     <xsl:template match="xhtml:ul/xhtml:li">
@@ -113,16 +90,5 @@
             </para>
         </listitem>
     </xsl:template>
-
-    <xsl:template match="xhtml:li" mode="stepalternatives">
-        <!-- <xsl:message>Entering li</xsl:message> -->
-        <step xmlns="http://docbook.org/ns/docbook">
-            <xsl:apply-templates />
-        </step>
-        <!-- <xsl:message>Exiting li</xsl:message> -->
-    </xsl:template>
-
-
-
 
 </xsl:transform>

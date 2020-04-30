@@ -16,9 +16,9 @@
     </xsl:template>
 
     <xsl:template match="xhtml:a">
-        <xsl:message>
+        <!-- <xsl:message>
             <xsl:value-of select="."/>
-        </xsl:message>
+        </xsl:message> -->
         <xsl:choose>
             <!-- Process a link to a glossary term -->
             <xsl:when test="@class='reference internal' and xhtml:span[@class='xref std std-term']">
