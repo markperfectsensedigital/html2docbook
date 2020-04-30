@@ -28,7 +28,7 @@ rm $OUTPUTFILE
 
 
 
-declare -a arr=("&#64;CurrentSite" "&#64;HttpCookie" "&#64;HttpHeader" "&#64;HttpMethod" "&#64;HttpParameter" "&#64;HttpRequestAttribute" "&#64;HttpServletPath" "&#64;HttpSignedCookie" "&#64;HttpStorageItemParameter" "&#64;MainObject")
+declare -a arr=("Creating Content Templates at the Role Level" "Modifying Content Templates at the Role Level" "Removing Content Templates at the Role Level")
 
 #"@Content.Searchable" "@RichTextElement.Exclusive" "@RichTextElement.Tag" "@RichTextElement.Tags" "@Seo.DescriptionFields" "@Seo.KeywordsFields" "@Seo.OpenGraphType" "@Seo.TitleFields" "@ToolUi.BulkUpload" "@ToolUi.Cluster" "@ToolUi.ClusterDisplayOrder" "@ToolUi.ClusterDisplayOrders" "@ToolUi.CodeType" "@ToolUi.CollectionItemProgress" "@ToolUi.CollectionItemToggle" "@ToolUi.CollectionItemWeight" "@ToolUi.CollectionItemWeightColor" "@ToolUi.CollectionItemWeightMarker" "@ToolUi.ColorPicker" "@ToolUi.CompatibleTypes" "@ToolUi.CssClass" "@ToolUi.DefaultSearchResult" "@ToolUi.DefaultSortField" "@ToolUi.DisplayAfter" "@ToolUi.DisplayBefore" "@ToolUi.DisplayFirst" "@ToolUi.DisplayGlobalFilters" "@ToolUi.DisplayGrid" "@ToolUi.DisplayLast" "@ToolUi.DropDown" "@ToolUi.Expanded" "@ToolUi.FieldDisplayOrder" "@ToolUi.FieldDisplayType" "@ToolUi.FieldSorted" "@ToolUi.Filterable" "@ToolUi.GlobalFilter" "@ToolUi.Heading" "@ToolUi.Hidden" "@ToolUi.InputProcessorPath" "@ToolUi.InputSearcherPath" "@ToolUi.LanguageTag" "@ToolUi.LayoutField" "@ToolUi.LayoutPlaceholder" "@ToolUi.LayoutPlaceholders" "@ToolUi.Main" "@ToolUi.Note" "@ToolUi.NoteHtml" "@ToolUi.NoteRendererClass" "@ToolUi.OnlyPathed" "@ToolUi.Placeholder" "@ToolUi.Publishable" "@ToolUi.PublishButtonText" "@ToolUi.ReadOnly" "@ToolUi.RichText" "@ToolUi.Secret" "@ToolUi.Sortable" "@ToolUi.StoragePreviewProcessorPath" "@ToolUi.StorageSetting" "@ToolUi.SuggestedMaximum" "@ToolUi.SuggestedMinimum" "@ToolUi.Suggestions" "@ToolUi.Tab" "@ToolUi.TabDisplayOrder" "@ToolUi.Unlabeled" "Viewing a Model’s Available Annotations" "Using Expression Language in Annotations" 
 
@@ -41,3 +41,4 @@ do
 done
 
 echo "Output in $OUTPUTFILE"
+cat $OUTPUTFILE

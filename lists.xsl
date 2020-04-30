@@ -7,7 +7,7 @@
 
     <xsl:template match="xhtml:ol">
         <!-- If an <ol> has a previous sibling that starts with 'To ', then assume this <ol> starts a procedure. -->
-        <xsl:message>Preceding: <xsl:value-of select="./preceding-sibling::xhtml:p[1]/xhtml:strong"/></xsl:message>
+        <!-- <xsl:message>Preceding: <xsl:value-of select="./preceding-sibling::xhtml:p[1]/xhtml:strong"/></xsl:message> -->
         <xsl:choose>
             <xsl:when test="starts-with(./preceding-sibling::xhtml:p[1]/xhtml:strong[1],'To ')">
                 <procedure xmlns="http://docbook.org/ns/docbook">

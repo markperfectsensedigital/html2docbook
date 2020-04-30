@@ -16,9 +16,9 @@
     </xsl:template>
 
     <xsl:template match="xhtml:a">
-        <!-- <xsl:message>
+        <xsl:message>
             <xsl:value-of select="."/>
-        </xsl:message> -->
+        </xsl:message>
         <xsl:choose>
             <!-- Process a link to a glossary term -->
             <xsl:when test="@class='reference internal' and xhtml:span[@class='xref std std-term']">
@@ -58,13 +58,13 @@
                  <xsl:message>resources_id <xsl:value-of select="$resource_id"/></xsl:message> -->
                 <xsl:variable name="resource_id" select="document('resource-9821.xml')//e:folder/e:component[@title=$target_title]/@id" />
                 <!-- <xsl:message>resource_id <xsl:value-of select="$resource_id"/></xsl:message>
-                <xsl:message>Count of resource ID <xsl:value-of select="count($resource_id)"/></xsl:message>
+                <xsl:message>Count of resource ID <xsl:value-of select="count($resource_id)"/></xsl:message> -->
                 <xsl:if test="count($resource_id) > 1">
-                <xsl:message>WARNING: Multiple targets for <xsl:value-of select="$target_title"/></xsl:message>
-                </xsl:if> -->
+                <xsl:message>WARNING: Multiple targets for <xsl:value-of select="$target_title"/>. Using the first one.</xsl:message>
+                </xsl:if> 
                 <xsl:element name="xref" namespace="xmlns:xlink">
                     <xsl:attribute name="xlink:href">
-                        <xsl:value-of select="concat('urn:resource:component:',$resource_id | $resource_id[0])" />
+                        <xsl:value-of select="concat('urn:resource:component:',($resource_id | $resource_id)[0])" />
                     </xsl:attribute>
                 </xsl:element>
             </xsl:when>
