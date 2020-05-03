@@ -387,6 +387,45 @@
             <xsl:when test="$filename='theme-variations.svg'">UUID-6ffd5a28-5cfe-8bb6-b014-187820eeb993</xsl:when>
             <xsl:when test="$filename='theme-version.png'">UUID-4c0536f1-fe45-2caa-b005-fefe23ceca77</xsl:when>
 
+            <!-- 3.3 editor images -->
+
+            <xsl:when test="$filename='crop-image.svg'">UUID-12ffcfd7-1456-fdac-181a-0ed194b71e72</xsl:when>
+            <xsl:when test="$filename='editing-brightness.jpg'">UUID-333bbf42-a18f-4127-42e7-3f76117aa7ff</xsl:when>
+            <xsl:when test="$filename='editing-clockwise.jpg'">UUID-52b37412-7676-eb80-b204-55c0c9274823</xsl:when>
+            <xsl:when test="$filename='editing-contrast.jpg'">UUID-62ef4577-ac59-0377-9481-ec73c41df9cd</xsl:when>
+            <xsl:when test="$filename='editing-counter-clockwise.jpg'">UUID-498d01f7-204e-53c9-1b0d-3f6010cda8c1</xsl:when>
+            <xsl:when test="$filename='editing-grayscale.jpg'">UUID-86605894-3607-c76d-7f76-633b67f6f525</xsl:when>
+            <xsl:when test="$filename='editing-horizontal.jpg'">UUID-6029186a-4bcd-c336-47a7-c0c3e6a6ef0c</xsl:when>
+            <xsl:when test="$filename='editing-invert.jpg'">UUID-02f47f9f-18b9-869f-c02d-41c5809a34c1</xsl:when>
+            <xsl:when test="$filename='editing-reset.jpg'">UUID-d2c41509-34ed-99b3-4b1f-d6918896dd83</xsl:when>
+            <xsl:when test="$filename='editing-sepia.jpg'">UUID-f790ec2d-2d66-ddba-3b4b-a61e3a363b7b</xsl:when>
+            <xsl:when test="$filename='editing-vertical.jpg'">UUID-772e6c01-a515-6a01-0a62-eb4389f419b4</xsl:when>
+            <xsl:when test="$filename='focus-point.svg'">UUID-cc38569b-d6c8-e4a8-c608-f9e681912413</xsl:when>
+            <xsl:when test="$filename='image-editing.jpg'">UUID-08930083-ce62-478a-c0a5-168a479e0787</xsl:when>
+            <xsl:when test="$filename='image-upload.png'">UUID-be3d9ba9-1767-333c-8c4e-1ad0019d4a62</xsl:when>
+
+            <!-- 3.3 component images -->
+
+            <xsl:when test="$filename='ad-example.svg'">UUID-c95570ed-03ad-ede7-0f61-b98c9e39dae6</xsl:when>
+            <xsl:when test="$filename='ad-form.png'">UUID-78008cfa-1310-05d1-a269-3f8970c5c8f7</xsl:when>
+            <xsl:when test="$filename='container-example.png'">UUID-349981b5-d805-1809-78f5-1efef60825e8</xsl:when>
+            <xsl:when test="$filename='container-form.png'">UUID-d0436973-7f13-2826-7e75-7cd0da8c8ae1</xsl:when>
+            <xsl:when test="$filename='gallery-example.png'">UUID-36ba918a-d834-8c22-7358-8b9fc43c5c8c</xsl:when>
+            <xsl:when test="$filename='gallery-form.png'">UUID-ccf85370-f36f-aa89-3aba-9b6c819c101a</xsl:when>
+            <xsl:when test="$filename='inspire-confidence-sections.svg'">UUID-a5fe61bf-de93-1d57-9d1b-f4b6e6eb531a</xsl:when>
+            <xsl:when test="$filename='modules.svg'">UUID-5c9f2588-ac4d-1fff-a867-cd8cbe84c80a</xsl:when>
+            <xsl:when test="$filename='personalized-form.png'">UUID-063a011f-7d92-438e-0105-aa412160e81b</xsl:when>
+            <xsl:when test="$filename='playlist-form.png'">UUID-3ca65de4-a6bf-e571-8535-c3bfe05c6699</xsl:when>
+            <xsl:when test="$filename='promo-example.png'">UUID-1699c738-1183-767e-12a4-6f7d9f2f6d10</xsl:when>
+            <xsl:when test="$filename='promo-form.png'">UUID-2d43e6c5-2d7e-ed7f-0235-b4117d96b734</xsl:when>
+            <xsl:when test="$filename='pull-quote-example.svg'">UUID-8248f0b5-4b48-f1d9-e0e3-bf575d593d60</xsl:when>
+            <xsl:when test="$filename='pull-quote-form.png'">UUID-888a9d66-8e86-cc92-e882-22be1d6f8507</xsl:when>
+            <xsl:when test="$filename='rich-text-editor-form.png'">UUID-b8f9055f-6186-b21d-6b22-0fcf7ae1cb51</xsl:when>
+            <xsl:when test="$filename='search-example.png'">UUID-fd6b5d3f-fb3c-6331-9386-9205029e3092</xsl:when>
+            <xsl:when test="$filename='search-form.png'">UUID-a22eaf5d-09bf-ee96-f053-10bd43ad6144</xsl:when>
+            <xsl:when test="$filename='shared-form.png'">UUID-a360bfe8-08af-42c3-a73b-cd83dd44f29f</xsl:when>
+            <xsl:when test="$filename='stock-ticker-form.png'">UUID-8d030b7e-2ed0-d4ae-2840-2528ffb4aa23</xsl:when>
+            <xsl:when test="$filename='tabs-form.png'">UUID-70c76e9c-7d77-ce49-ad6d-8fe1ba4f34dc</xsl:when>
 
             <xsl:otherwise>
                 <xsl:message>WARNING: No UUID found for image file <xsl:value-of select="$filename"/>

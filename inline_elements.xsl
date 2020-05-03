@@ -51,20 +51,21 @@
             <!-- Process a link to an internal target -->
             <xsl:when test="@class='reference internal' and (xhtml:span[@class='std std-ref'] or xhtml:span[@class='doc'])">
                 <xsl:variable name="target_title" select="xhtml:span"/>
-                <!-- <xsl:message>target_title: <xsl:value-of select="$target_title"/></xsl:message>
-                <xsl:variable name="resources" select="document('resource-1.xml')//e:resource/e:component[@title=$target_title]" />
+                <!-- <xsl:message>target_title: <xsl:value-of select="$target_title"/></xsl:message> -->
+                <!-- <xsl:variable name="resources" select="document('resource-1.xml')//e:resource/e:component[@title=$target_title]" />
                 <xsl:message>resources: <xsl:value-of select="$resources"/></xsl:message>
                 <xsl:variable name="resource_id" select="$resources/@id" />
                  <xsl:message>resources_id <xsl:value-of select="$resource_id"/></xsl:message> -->
                 <xsl:variable name="resource_id" select="document('resource-9821.xml')//e:folder/e:component[@title=$target_title]/@id" />
                 <!-- <xsl:message>resource_id <xsl:value-of select="$resource_id"/></xsl:message>
-                <xsl:message>Count of resource ID <xsl:value-of select="count($resource_id)"/></xsl:message> -->
+                <xsl:message>Count of resource ID <xsl:value-of select="count($resource_id)"/></xsl:message>
+                 <xsl:message>Result of union <xsl:value-of select="($resource_id | $resource_id)[1]"/></xsl:message> -->
                 <xsl:if test="count($resource_id) > 1">
                 <xsl:message>WARNING: Multiple targets for <xsl:value-of select="$target_title"/>. Using the first one.</xsl:message>
                 </xsl:if> 
                 <xsl:element name="xref" namespace="xmlns:xlink">
                     <xsl:attribute name="xlink:href">
-                        <xsl:value-of select="concat('urn:resource:component:',($resource_id | $resource_id)[0])" />
+                        <xsl:value-of select="concat('urn:resource:component:',($resource_id | $resource_id)[1])" />
                     </xsl:attribute>
                 </xsl:element>
             </xsl:when>
