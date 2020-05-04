@@ -8,3 +8,4 @@ images.html
 resource-*.xml
 include.xml
 docbooks/
+substitutions.tsr

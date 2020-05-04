@@ -30,7 +30,7 @@
     </xsl:template>
 
     <!-- See also list -->
-    <xsl:template match="xhtml:ul[preceding-sibling::xhtml:p[1]/xhtml:strong]">
+    <xsl:template match="xhtml:ul[preceding-sibling::xhtml:p[1]/xhtml:strong and string-length(preceding-sibling::xhtml:p[1]) = 1]">
         <itemizedlist xmlns="http://docbook.org/ns/docbook">
             <title xmlns="http://docbook.org/ns/docbook">
                 <xsl:choose>
@@ -60,7 +60,7 @@
     <xsl:template match="xhtml:ol/xhtml:li/xhtml:ul">
         <!-- <xsl:message>Entering itemized list</xsl:message> -->
         <stepalternatives xmlns="http://docbook.org/ns/docbook">
-            <xsl:apply-templates />
+            <xsl:apply-templates mode="stepalternatives" />
         </stepalternatives>
     </xsl:template>
 
@@ -89,6 +89,14 @@
                 <xsl:apply-templates />
             </para>
         </listitem>
+    </xsl:template>
+
+        <xsl:template match="xhtml:ul/xhtml:li" mode="stepalternatives">
+        <step xmlns="http://docbook.org/ns/docbook">
+            <para>
+                <xsl:apply-templates />
+            </para>
+        </step>
     </xsl:template>
 
 </xsl:transform>

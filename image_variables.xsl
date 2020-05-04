@@ -427,6 +427,50 @@
             <xsl:when test="$filename='stock-ticker-form.png'">UUID-8d030b7e-2ed0-d4ae-2840-2528ffb4aa23</xsl:when>
             <xsl:when test="$filename='tabs-form.png'">UUID-70c76e9c-7d77-ce49-ad6d-8fe1ba4f34dc</xsl:when>
 
+            <xsl:when test="$filename='list-advanced-form.png'">UUID-c1e1ab8e-f206-9965-5549-c6c4d89cecfd</xsl:when>
+            <xsl:when test="$filename='list-basic-form.png'">UUID-5cedb12a-c9f5-e3d5-f49f-c4786d0e5aa9</xsl:when>
+            <xsl:when test="$filename='list-dynamic-form.png'">UUID-79a5157d-1492-73e5-0678-3f56eb618c9e</xsl:when>
+            <xsl:when test="$filename='list-dynamic-social-form.png'">UUID-8d62f131-d12e-79ed-1b52-aa9a45a668c5</xsl:when>
+            <xsl:when test="$filename='list-advanced-form.png'">UUID-c1e1ab8e-f206-9965-5549-c6c4d89cecfd</xsl:when>
+            <xsl:when test="$filename='list-basic-form.png'">UUID-5cedb12a-c9f5-e3d5-f49f-c4786d0e5aa9</xsl:when>
+            <xsl:when test="$filename='list-dynamic-form.png'">UUID-79a5157d-1492-73e5-0678-3f56eb618c9e</xsl:when>
+            <xsl:when test="$filename='list-dynamic-social-form.png'">UUID-8d62f131-d12e-79ed-1b52-aa9a45a668c5</xsl:when>
+            <xsl:when test="$filename='contact-form-example.png'">UUID-d7c1b0da-c653-6a2b-a637-260b9af58074</xsl:when>
+            <xsl:when test="$filename='contact-form.png'">UUID-c969050f-c43a-ed06-f05c-d2f1f006f1b7</xsl:when>
+            <xsl:when test="$filename='custom-form-example.png'">UUID-9522ba2b-9c39-c92e-fc8b-c84778779f1f</xsl:when>
+            <xsl:when test="$filename='custom-form.png'">UUID-311a354e-baab-401a-d684-cf09aed60de6</xsl:when>
+            <xsl:when test="$filename='forms-additional-attributes.png'">UUID-7e7d7f50-2991-9be7-3a25-41d6efd9c24e</xsl:when>
+            <xsl:when test="$filename='forms-advanced-parameter.png'">UUID-43c1fafd-0651-9778-055a-4976a7e513e5</xsl:when>
+            <xsl:when test="$filename='forms-checkboxes-field-rendered.png'">UUID-f145551b-bd4d-7fad-9ea8-43796a855adf</xsl:when>
+            <xsl:when test="$filename='forms-checkboxes-field.png'">UUID-9acebb41-d622-115c-e782-314c398dff29</xsl:when>
+            <xsl:when test="$filename='forms-dropdown-field-rendered.png'">UUID-0a04820d-3a94-0bba-a3f3-692ac2a94262</xsl:when>
+            <xsl:when test="$filename='forms-dropdown-field.png'">UUID-fe020b4c-bc13-d52a-9b59-0f4e1d13284a</xsl:when>
+            <xsl:when test="$filename='forms-file-upload-field-rendered.png'">UUID-b3d6ef20-35f6-c532-3845-a026bd347ff5</xsl:when>
+            <xsl:when test="$filename='forms-file-upload-field.png'">UUID-e363f5cb-8b4b-c300-bdbb-9b791aa09777</xsl:when>
+            <xsl:when test="$filename='forms-group-field-rendered.png'">UUID-953cdc2a-ee62-2b79-ce5f-30fadb662af1</xsl:when>
+            <xsl:when test="$filename='forms-group-field.png'">UUID-8f0bf553-4121-02c1-7837-1ecff59227d1</xsl:when>
+            <xsl:when test="$filename='forms-parameter-reference.png'">UUID-0bf30e58-6344-f6c0-3053-58be91ae9fb9</xsl:when>
+            <xsl:when test="$filename='forms-radiobuttons-field-rendered.png'">UUID-5796fec8-6111-f1f3-629b-33041ada3542</xsl:when>
+            <xsl:when test="$filename='forms-radiobuttons-field.png'">UUID-441c41a0-25f3-a528-ebb2-d157e24b7979</xsl:when>
+            <xsl:when test="$filename='forms-text-field-rendered.png'">UUID-875be47f-fddd-bddf-d11e-fc09d5d45c79</xsl:when>
+            <xsl:when test="$filename='forms-text-field.png'">UUID-e2b6dbf9-a9d4-368b-4786-c09cd8d3fc44</xsl:when>
+
+            <xsl:when test="$filename='action-bar.png'">UUID-99d4045c-cdf8-c6ef-12a7-72db684d0dc3</xsl:when>
+            <xsl:when test="$filename='blog-ad-size.png'">UUID-08bcf2de-4d23-acc0-e7e6-6bad0a0891e8</xsl:when>
+            <xsl:when test="$filename='blog-layout.svg'">UUID-577e0c52-5c97-5e18-bdd4-674317f7239d</xsl:when>
+            <xsl:when test="$filename='blog-module-above.png'">UUID-ab4463f4-fb3c-6e2d-1a3c-4848d1560910</xsl:when>
+            <xsl:when test="$filename='blog-module-aside.png'">UUID-c84c4bcc-f9eb-001d-9e30-686a0049a17b</xsl:when>
+            <xsl:when test="$filename='blog-reader-comments.png'">UUID-f96dc162-736c-0e62-fed4-350919658e1c</xsl:when>
+            <xsl:when test="$filename='favicon-form.png'">UUID-55f74a95-1e7e-e885-483c-cc35c7791ff5</xsl:when>
+            <xsl:when test="$filename='favicon.png'">UUID-d9f5bd48-ce0a-61b3-f4ba-6a95844a98dc</xsl:when>
+            <xsl:when test="$filename='footer-form.png'">UUID-a695c515-b19b-bb9b-ca1e-97fa2866dcef</xsl:when>
+            <xsl:when test="$filename='header-form.png'">UUID-6f282be2-2c7e-487e-b126-04e09bbdd34a</xsl:when>
+            <xsl:when test="$filename='new-site-main-tab.png'">UUID-4c6c5622-8b62-ffee-05fb-d457e5e64e79</xsl:when>
+            <xsl:when test="$filename='video-ad-size.png'">UUID-a5ca9d16-776c-cf0b-8ed8-c98df8c5d908</xsl:when>
+            <xsl:when test="$filename='video-file.png'">UUID-15c3ecf7-22be-7dc4-ee70-0af8659223b7</xsl:when>
+            <xsl:when test="$filename='video-hosting-layout.svg'">UUID-846ffbc0-5714-c7cb-eef1-b7a699e411b8</xsl:when>
+
+
             <xsl:otherwise>
                 <xsl:message>WARNING: No UUID found for image file <xsl:value-of select="$filename"/>
                 </xsl:message>
