@@ -30,14 +30,14 @@
     </xsl:template>
 
     <!-- See also list -->
-    <xsl:template match="xhtml:ul[preceding-sibling::xhtml:p[1]/xhtml:strong and string-length(preceding-sibling::xhtml:p[1]) = 1]">
+    <xsl:template match="xhtml:ul[preceding-sibling::xhtml:p[1]/xhtml:strong]">
         <itemizedlist xmlns="http://docbook.org/ns/docbook">
             <title xmlns="http://docbook.org/ns/docbook">
                 <xsl:choose>
                     <xsl:when test="preceding-sibling::xhtml:p[1]/xhtml:strong/text() = 'See also:'">
                         <xsl:element name="phrase">
-                            <xsl:attribute name="varset" namespace="xinfo">446</xsl:attribute>
-                            <xsl:attribute name="variable" namespace="xinfo">6</xsl:attribute>
+                            <xsl:attribute name="xinfo:varset">446</xsl:attribute>
+                            <xsl:attribute name="xinfo:variable">6</xsl:attribute>
                         </xsl:element>
                     </xsl:when>
                     <xsl:otherwise>

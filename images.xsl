@@ -7,6 +7,12 @@
 
 
   <xsl:template match="xhtml:div[@class='figure']">
+    <xsl:variable name="UUID">
+      <xsl:call-template name="get_uuid">
+
+        <xsl:with-param name="filename" select="substring-after(@src,'_images/')"/>
+      </xsl:call-template>
+    </xsl:variable>
     <figure>
             <title>
 
@@ -15,7 +21,34 @@
         </title>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="UUID-c5e34f79-3513-6bf3-fc0a-5d8fff4d0e76" width="486" xinfo:image="UUID-c5e34f79-3513-6bf3-fc0a-5d8fff4d0e76"/>
+          <!-- <imagedata fileref="UUID-c5e34f79-3513-6bf3-fc0a-5d8fff4d0e76" width="486" xinfo:image="UUID-c5e34f79-3513-6bf3-fc0a-5d8fff4d0e76"/> -->
+            <imageobject>
+        <xsl:element name="imagedata">
+          <xsl:attribute name="fileref">
+            <xsl:value-of select="$UUID"/>
+          </xsl:attribute>
+          <xsl:attribute name="xinfo:image">
+            <xsl:value-of select="$UUID"/>
+          </xsl:attribute>
+          <xsl:if test="@style">
+            <xsl:if test="contains(@style,'width:')">
+              <xsl:attribute name="contentwidth">
+                <xsl:value-of select="omg:getCssProperty(@style,'width:')"/>
+              </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="contains(@style,'height:')">
+              <xsl:attribute name="contentdepth">
+                <xsl:value-of select="omg:getCssProperty(@style,'height:')"/>
+              </xsl:attribute>
+            </xsl:if>
+          </xsl:if>
+          <xsl:if test="@width">
+          <xsl:attribute name="contentwidth">
+                <xsl:value-of select="@width"/>
+              </xsl:attribute>
+          </xsl:if>
+        </xsl:element>
+      </imageobject>
         </imageobject>
 
       </mediaobject>

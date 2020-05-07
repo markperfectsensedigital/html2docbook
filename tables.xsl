@@ -10,7 +10,7 @@
 <xsl:when test="xhtml:caption">
         <table xmlns="http://docbook.org/ns/docbook" frame="border" rules="all">
         <caption>
-            <xsl:value-of select="caption/span/text()"/>
+            <xsl:value-of select="caption/span"/>
         </caption>
             <xsl:apply-templates />
         </table>
